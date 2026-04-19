@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Archive | Anniversary v18.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-obsidian: #050505;
+            --accent-blue: #3b82f6;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* The Audio Card */
+        .voice-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 24px;
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .voice-card.playing {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.05);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Animated Frequency Waves */
+        .wave-container {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 20px;
+        }
+
+        .wave-bar {
+            width: 2px;
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+
+        .playing .wave-bar {
+            background: var(--accent-blue);
+            animation: wave-dance 1s ease-in-out infinite;
+        }
+
+        @keyframes wave-dance {
+            0%, 100% { height: 5px; }
+            50% { height: 20px; }
+        }
+
+        /* Staggered animation for the bars */
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        .play-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .playing .play-btn {
+            background: var(--accent-blue);
+            color: #000;
+        }
+    </style>
+</head>
+<body class="max-w-4xl mx-auto">
+
+    <header class="text-center mb-16">
+        <p class="mono text-[9px] text-blue-500 tracking-[0.6em] mb-4 uppercase">Audio Archive // Dec-10</p>
+        <h1 class="text-5xl font-extrabold tracking-tighter mb-4">THE ECHO <br><span class="text-stone-700 italic">VAULT.</span></h1>
+        <p class="text-zinc-500 text-xs italic">Voices preserved from a decade of connection.</p>
+    </header>
+
+    <div class="space-y-4">
+        
+        <div class="voice-card flex items-center justify-between" id="card-1">
+            <div class="flex items-center gap-6">
+                <div class="play-btn" onclick="toggleAudio('card-1')">
+                    <svg id="icon-1" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-widest mb-1">Bala // Chennai</h3>
+                    <p class="mono text-[8px] text-zinc-500">SENT: 2026-03-24 • 0:42 SEC</p>
+                </div>
+            </div>
+            
+            <div class="wave-container">
+                <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            </div>
+        </div>
+
+        <div class="voice-card flex items-center justify-between" id="card-2">
+            <div class="flex items-center gap-6">
+                <div class="play-btn" onclick="toggleAudio('card-2')">
+                    <svg id="icon-2" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-widest mb-1">Unknown // Dubai</h3>
+                    <p class="mono text-[8px] text-zinc-500">SENT: 2026-04-10 • 1:15 SEC</p>
+                </div>
+            </div>
+            
+            <div class="wave-container">
+                <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            </div>
+        </div>
+
+        <div class="voice-card border-dashed border-zinc-800 flex items-center justify-center py-8">
+            <button class="mono text-[9px] text-zinc-600 hover:text-blue-500 transition-colors tracking-[0.4em] uppercase">
+                + Upload New Frequency ($30)
+            </button>
+        </div>
+
+    </div>
+
+    <footer class="mt-20 text-center opacity-20">
+        <p class="mono text-[7px] tracking-[1em] uppercase">Spectral-Audio-Core • Premium Tier</p>
+    </footer>
+
+    <script>
+        function toggleAudio(id) {
+            const card = document.getElementById(id);
+            const icon = card.querySelector('svg');
+            
+            // Toggle Logic
+            if(card.classList.contains('playing')) {
+                card.classList.remove('playing');
+                icon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // Play Icon
+            } else {
+                // Pause all other cards first
+                document.querySelectorAll('.voice-card').forEach(c => {
+                    c.classList.remove('playing');
+                    const otherIcon = c.querySelector('svg');
+                    if(otherIcon) otherIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                });
+
+                card.classList.add('playing');
+                icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // Pause Icon
+            }
+        }
+    </script>
+</body>
+</html>
+

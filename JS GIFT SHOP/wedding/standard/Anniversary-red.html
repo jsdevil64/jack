@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Anniversary | Alex & Jordan</title>
+    <style>
+        :root {
+            --deep-red: #8b0000;
+            --rose: #a52a2a;
+            --charcoal: #1a1a1a;
+            --cream: #fffaf0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background-color: var(--charcoal);
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        /* Anniversary Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(139, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            padding: 50px;
+            border: 1px solid var(--rose);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: white;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.8);
+            margin-bottom: 10px;
+        }
+
+        .years-tag {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-size: 1rem;
+            color: var(--rose);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Detail Section */
+        .detail-section {
+            padding: 100px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .red-divider {
+            height: 2px;
+            width: 80px;
+            background: var(--deep-red);
+            margin: 30px auto;
+        }
+
+        .btn-anniversary {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 18px 50px;
+            background: var(--deep-red);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.5s;
+            border: none;
+        }
+
+        .btn-anniversary:hover {
+            background: white;
+            color: var(--deep-red);
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3rem; }
+            .hero-content { padding: 30px 15px; margin: 20px; }
+            .hero { background-attachment: scroll; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,400&family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="years-tag">Celebrating 10 Years</span>
+            <h1>Alex & Jordan</h1>
+            <p style="letter-spacing: 3px; font-size: 1.1rem;">STILL IN LOVE • 10 . 12 . 2026</p>
+        </div>
+    </section>
+
+    <section class="detail-section">
+        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--rose);">The Journey Continues</h2>
+        <div class="red-divider"></div>
+        <p style="font-size: 1.2rem; font-style: italic;">
+            "A decade of laughter, a lifetime of memories.<br>
+            Please join us for an evening of wine, music, and celebration<br>
+            as we renew our commitment to one another."
+        </p>
+        
+        <div style="margin-top: 50px;">
+            <p style="font-weight: bold; letter-spacing: 2px;">THE CRIMSON BALLROOM</p>
+            <p>7:00 PM • DRESS IN RED OR BLACK</p>
+        </div>
+
+        <a href="#rsvp" class="btn-anniversary">Confirm Attendance</a>
+    </section>
+
+</body>
+</html>

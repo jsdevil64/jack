@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Jubilee | 50 Years</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Outfit:wght@300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --obsidian: #050505;
+            /* 24K Gold Foil Gradient */
+            --gold-foil: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            --gold-glow: rgba(191, 149, 63, 0.3);
+        }
+
+        body {
+            background-color: var(--obsidian);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .cinzel { font-family: 'Cinzel', serif; }
+
+        /* The Gold Leaf Card */
+        .gold-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(191, 149, 63, 0.4);
+            padding: 60px 40px;
+            border-radius: 2px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 60px var(--gold-glow), inset 0 0 20px var(--gold-glow);
+            max-width: 480px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Animated Foil Text */
+        .foil-effect {
+            background: var(--gold-foil);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 6rem;
+            line-height: 1;
+            font-weight: 700;
+            animation: foil-shine 8s ease-in-out infinite;
+        }
+
+        @keyframes foil-shine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Decorative Corners */
+        .corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #bf953f;
+        }
+        .top-left { top: 15px; left: 15px; border-right: 0; border-bottom: 0; }
+        .bottom-right { bottom: 15px; right: 15px; border-left: 0; border-top: 0; }
+
+        .btn-gold {
+            background: var(--gold-foil);
+            color: black;
+            padding: 15px 35px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 40px;
+            transition: 0.4s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #fcf6ba;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gold-card">
+        <div class="corner top-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <header class="mb-8">
+            <p class="text-[9px] tracking-[0.8em] text-stone-500 uppercase mb-4">A Half Century of Brilliance</p>
+            <h1 class="foil-effect cinzel">50</h1>
+            <h2 class="cinzel text-xl tracking-[0.4em] uppercase text-[#fcf6ba] mt-4">Golden Jubilee</h2>
+        </header>
+
+        <main class="space-y-6">
+            <div class="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#bf953f] to-transparent mx-auto"></div>
+            <p class="text-sm text-stone-400 font-light leading-relaxed px-6">
+                "Fifty years of unwavering light. A legacy forged in gold, tested by time, and polished by love."
+            </p>
+            <div class="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#bf953f] to-transparent mx-auto"></div>
+        </main>
+
+        <button class="btn-gold">The Golden Archive ($15)</button>
+        <p class="text-[7px] text-white/10 uppercase tracking-[0.4em] mt-8">24K Premium Build • $6.00</p>
+    </div>
+
+</body>
+</html>

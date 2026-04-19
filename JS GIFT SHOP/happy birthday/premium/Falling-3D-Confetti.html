@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium 3D Confetti Celebration</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            pointer-events: none;
+            color: white;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            background: linear-gradient(to right, #fff, #ffd700, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255,215,0,0.3));
+            animation: glow 3s infinite ease-in-out;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255,215,0,0.6)); }
+        }
+
+        p {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay">
+        <h1>Happy Birthday</h1>
+        <p>A SPECTACULAR YEAR AWAITS</p>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, confetti = [];
+        const CONFETTI_COUNT = 150;
+        const COLORS = ['#ffd700', '#ffffff', '#ff3e3e', '#3eafff', '#9d50bb'];
+        
+        let mouse = { x: -1000, y: -1000 };
+
+        class Piece {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height - height;
+                this.size = Math.random() * 8 + 6;
+                this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+                
+                // 3D Rotation vectors
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = (Math.random() - 0.5) * 0.1;
+                
+                // Physics
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = Math.random() * 2 + 2;
+                
+                // Flip (the 3D effect)
+                this.flip = Math.random();
+                this.flipSpeed = Math.random() * 0.03 + 0.01;
+            }
+
+            update() {
+                // Gravity and Wind
+                this.x += this.vx;
+                this.y += this.vy;
+                this.rotation += this.rotationSpeed;
+                this.flip += this.flipSpeed;
+
+                // Mouse Interaction (Pushing away)
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 150) {
+                    const force = (150 - dist) / 150;
+                    this.vx += (dx / dist) * force * 5;
+                }
+
+                // Reset when off screen
+                if (this.y > height) this.reset();
+                if (this.x > width) this.x = 0;
+                if (this.x < 0) this.x = width;
+            }
+
+            draw() {
+                const width3d = Math.cos(this.flip) * this.size;
+                
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                
+                // Draw the "paper" scrap
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-width3d / 2, -this.size / 2, width3d, this.size);
+                
+                // Add a "shimmer" highlight
+                if (width3d < 0) {
+                    ctx.fillStyle = 'rgba(255,255,255,0.2)';
+                    ctx.fillRect(-width3d / 2, -this.size / 2, width3d, this.size);
+                }
+
+                ctx.restore();
+            }
+        }
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            confetti = [];
+            for (let i = 0; i < CONFETTI_COUNT; i++) {
+                confetti.push(new Piece());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            confetti.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('resize', init);
+        
+        init();
+        animate();
+    </script>
+</body>
+</html>
+

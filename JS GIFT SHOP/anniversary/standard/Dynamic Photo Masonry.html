@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Masonry | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fraunces:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-studio: #fcfbf9;
+            --accent-charcoal: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-studio);
+            color: var(--accent-charcoal);
+            font-family: 'DM+Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .serif-italic { font-family: 'Fraunces', serif; }
+
+        /* Masonry Container */
+        .masonry-grid {
+            columns: 2; /* 2 columns for mobile, 3 for desktop via media query */
+            column-gap: 15px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .masonry-grid { columns: 3; }
+        }
+
+        /* The Photo Brick */
+        .masonry-brick {
+            background: #fff;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .masonry-brick:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            z-index: 10;
+        }
+
+        .masonry-brick img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: filter 0.5s ease;
+        }
+
+        .brick-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            color: white;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .masonry-brick:hover .brick-overlay {
+            opacity: 1;
+        }
+
+        .btn-curate {
+            background: var(--accent-charcoal);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 4px;
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: 0.4s;
+            display: block;
+            margin: 40px auto;
+        }
+
+        .btn-curate:hover {
+            letter-spacing: 7px;
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="py-20 text-center px-6">
+        <p class="text-[10px] tracking-[0.7em] uppercase text-stone-400 mb-4">A Dynamic Collective</p>
+        <h1 class="serif-italic text-5xl md:text-7xl">Ten Years, <br>One Frame.</h1>
+    </header>
+
+    <main class="masonry-grid">
+        <div class="masonry-brick">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800" alt="Moment 01">
+            <div class="brick-overlay">
+                <p class="text-[10px] uppercase tracking-widest opacity-70">Chapter I</p>
+                <h3 class="text-sm font-bold">The Beginning</h3>
+            </div>
+        </div>
+
+        <div class="masonry-brick">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800" alt="Moment 02">
+            <div class="brick-overlay">
+                <p class="text-[10px] uppercase tracking-widest opacity-70">Chapter II</p>
+                <h3 class="text-sm font-bold">Small Wins</h3>
+            </div>
+        </div>
+
+        <div class="masonry-brick">
+            <img src="https://images.unsplash.com/photo-1522673607200-1648482ce486?q=80&w=800" alt="Moment 03">
+            <div class="brick-overlay">
+                <p class="text-[10px] uppercase tracking-widest opacity-70">Chapter III</p>
+                <h3 class="text-sm font-bold">Midnight Talks</h3>
+            </div>
+        </div>
+
+        <div class="masonry-brick">
+            <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800" alt="Moment 04">
+            <div class="brick-overlay">
+                <p class="text-[10px] uppercase tracking-widest opacity-70">Chapter IV</p>
+                <h3 class="text-sm font-bold">The Great Escape</h3>
+            </div>
+        </div>
+    </main>
+
+    <section class="pb-20">
+        <button class="btn-curate">Expand Collection ($15)</button>
+        <p class="text-center text-[8px] tracking-[0.4em] text-stone-300 uppercase mt-4">
+            Compressed View ($6.00)
+        </p>
+    </section>
+
+</body>
+</html>

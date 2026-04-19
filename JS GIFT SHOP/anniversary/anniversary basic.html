@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focused - 10 Mini Projects</title>
+    <style>
+        /* Dark Theme Design */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 8px;
+            color: #bf953f;
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 2rem;
+            text-shadow: 0 0 15px rgba(179, 135, 40);
+        }
+
+        /* 10 files-aiyum grid-ah vakkurathuku */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .mini-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .mini-card:hover {
+            border-color: #38bdf8;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 134, 187);
+        }
+
+        /* Iframe preview settings */
+        iframe {
+            width: 200%;
+            height: 200%;
+            border: none;
+            pointer-events: none; /* Click panna iframe kulla pogama irukka */
+            zoom: 0.5; /* Preview size-ah kurikka */
+            -moz-transform: scale(0.5);
+            -moz-transform-origin: 0 0;
+        }
+
+        .label {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BASIC</h1>
+
+    <div class="grid-container">
+        <div class="mini-card" onclick="window.location.href='basic/5th Year Wood Style.html'">
+            <iframe src="basic/5th Year Wood Style.html"></iframe>
+            <div class="label">5th Year Wood Style</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='basic/Beach-Sunset Theme.html'">
+            <iframe src="basic/Beach-Sunset Theme.html"></iframe>
+            <div class="label">Beach-Sunset Theme</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='basic/Bridal Shop.html'">
+            <iframe src="basic/Bridal Shop.html"></iframe>
+            <div class="label">Bridal Shop</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='basic/Linktree-style.html'">
+            <iframe src="basic/Linktree-style.html"></iframe>
+            <div class="label">Linktree-style</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='basic/Cocktail Night.html'">
+            <iframe src="basic/Cocktail Night.html"></iframe>
+            <div class="label">Cocktail Night</div>
+        </div>
+    
+        <div class="mini-card" onclick="window.location.href='basic/Comic Book layout.html'">
+            <iframe src="basic/Comic Book layout.html"></iframe>
+            <div class="label">Comic Book layout</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='basic/Countdown Timer Page.html'">
+            <iframe src="basic/Countdown Timer Page.html"></iframe>
+            <div class="label">Countdown Timer Page</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='basic/Dark-Night Sky-Theme.html'">
+            <iframe src="basic/Dark-Night Sky-Theme.html"></iframe>
+            <div class="label">Dark-Night Sky-Theme</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='basic/Floating Heart Icons.html'">
+            <iframe src="basic/Floating Heart Icons.html"></iframe>
+            <div class="label">Floating Heart Icons</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='basic/Surprise Reveal Page.html'">
+            <iframe src="basic/Surprise Reveal Page.html"></iframe>
+            <div class="label">Surprise Reveal Page</div>
+        </div>
+    </div>
+    

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Hearts | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #fffafa; /* Snow White */
+            color: #4a4a4a;
+            font-family: 'Comfortaa', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .cursive { font-family: 'Pacifico', cursive; }
+
+        /* The Heart Animation Engine */
+        .heart-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 24px;
+            opacity: 0.6;
+            animation: rise 10s linear infinite;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Glass Content Card */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ffccd5;
+            border-radius: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-heart {
+            background-color: #ff85a1;
+            color: white;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 133, 161, 0.3);
+        }
+
+        .btn-heart:hover {
+            transform: scale(1.05);
+            background-color: #ff4d6d;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-6">
+
+    <div class="heart-container" id="heartContainer"></div>
+
+    <main class="max-w-md w-full glass-box p-10 text-center">
+        <header class="mb-10">
+            <span class="text-[10px] tracking-widest uppercase text-pink-400 font-bold">First Anniversary</span>
+            <h1 class="cursive text-4xl text-pink-500 mt-2">Alex & Jordan</h1>
+            <p class="text-xs text-stone-400 mt-4">One year of flying high.</p>
+        </header>
+
+        <div class="space-y-6">
+            <div class="p-4 bg-pink-50 rounded-2xl">
+                <p class="text-sm font-bold text-pink-600 mb-4 italic">"Love is in the air."</p>
+                <div class="flex flex-col gap-3">
+                    <button class="btn-heart py-3 text-xs font-bold uppercase tracking-widest">
+                        Send a Gift ($5)
+                    </button>
+                    <button class="text-pink-300 text-[10px] font-bold uppercase tracking-widest hover:text-pink-500 transition-colors">
+                        Buy a Treat ($3)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-10 opacity-40 text-[9px] uppercase tracking-[0.3em]">
+            To many more flights • 2026
+        </footer>
+    </main>
+
+    <script>
+        function createHeart() {
+            const container = document.getElementById('heartContainer');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Randomize position and timing
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            
+            // Randomize heart color/style
+            const hearts = ['❤️', '💖', '💕', '💗', '🌸'];
+            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+            
+            container.appendChild(heart);
+
+            // Cleanup
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        // Generate hearts at intervals
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
+

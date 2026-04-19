@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focused - 10 Mini Projects</title>
+    <style>
+        /* Dark Theme Design */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 8px;
+            color: #bf953f;
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 2rem;
+            text-shadow: 0 0 15px rgba(179, 135, 40);
+        }
+
+        /* 10 files-aiyum grid-ah vakkurathuku */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .mini-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .mini-card:hover {
+            border-color: #38bdf8;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 134, 187);
+        }
+
+        /* Iframe preview settings */
+        iframe {
+            width: 200%;
+            height: 200%;
+            border: none;
+            pointer-events: none; /* Click panna iframe kulla pogama irukka */
+            zoom: 0.5; /* Preview size-ah kurikka */
+            -moz-transform: scale(0.5);
+            -moz-transform-origin: 0 0;
+        }
+
+        .label {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>STANDARD</h1>
+
+    <div class="grid-container">
+        <div class="mini-card" onclick="window.location.href='standard/Video Background Hero.html'">
+            <iframe src="standard/Video Background Hero.html"></iframe>
+            <div class="label">Video Background Hero</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Silver Jubilee (25th) Gloss.html'">
+            <iframe src="standard/Silver Jubilee (25th) Gloss.html"></iframe>
+            <div class="label">Silver Jubilee (25th) Gloss</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Golden (50th) Foil Effect.html'">
+            <iframe src="standard/Golden (50th) Foil Effect.html"></iframe>
+            <div class="label">Golden (50th) Foil Effect</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Garden Party.html'">
+            <iframe src="standard/Garden Party.html"></iframe>
+            <div class="label">Garden Party</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Dynamic Photo Masonry.html'">
+            <iframe src="standard/Dynamic Photo Masonry.html"></iframe>
+            <div class="label">Dynamic Photo Masonry</div>
+        </div>
+    
+        <div class="mini-card" onclick="window.location.href='standard/Boho-Botanical.html'">
+            <iframe src="standard/Boho-Botanical.html"></iframe>
+            <div class="label">Boho-Botanical</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Anniversary Event Planner.html'">
+            <iframe src="standard/Anniversary Event Planner.html"></iframe>
+            <div class="label">Anniversary Event Planner</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Animated Heart Particles.html'">
+            <iframe src="standard/Animated Heart Particles"></iframe>
+            <div class="label">Animated Heart Particles</div>
+        </div>
+
+       
+    </div>
+    

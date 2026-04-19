@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Silk | Alex & Jordan</title>
+    <style>
+        :root {
+            --royal-maroon: #4a0404;
+            --silk-gold: #d4af37;
+            --cream-silk: #fffdf5;
+            --deep-shadow: rgba(74, 4, 4, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--cream-silk);
+            color: var(--royal-maroon);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animated Silk Sheen Background */
+        .silk-header {
+            height: 100vh;
+            background: linear-gradient(135deg, #4a0404 0%, #7b0a0a 25%, #4a0404 50%, #7b0a0a 75%, #4a0404 100%);
+            background-size: 400% 400%;
+            animation: silkMove 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes silkMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Royal Border Frame */
+        .frame {
+            width: 85%;
+            height: 85%;
+            border: 2px solid var(--silk-gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 40px;
+        }
+
+        .frame::before, .frame::after {
+            content: "❈";
+            position: absolute;
+            color: var(--silk-gold);
+            font-size: 2rem;
+            background: var(--royal-maroon);
+            padding: 10px;
+        }
+        .frame::before { top: -25px; }
+        .frame::after { bottom: -25px; }
+
+        .royal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--silk-gold);
+            text-align: center;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .date-badge {
+            margin-top: 30px;
+            padding: 10px 30px;
+            border-top: 1px solid var(--silk-gold);
+            border-bottom: 1px solid var(--silk-gold);
+            color: var(--cream-silk);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        /* Content Section */
+        .details {
+            max-width: 800px;
+            margin: -50px auto 100px;
+            background: white;
+            padding: 80px 40px;
+            box-shadow: 0 30px 60px var(--deep-shadow);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .details h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-royal {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 45px;
+            background: var(--royal-maroon);
+            color: var(--silk-gold);
+            text-decoration: none;
+            border: 1px solid var(--silk-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        .btn-royal:hover {
+            background: var(--silk-gold);
+            color: var(--royal-maroon);
+            transform: translateY(-3px);
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="silk-header">
+        <div class="frame">
+            <h1 class="royal-title">Alex &<br>Jordan</h1>
+            <div class="date-badge">August 22, 2026</div>
+        </div>
+    </section>
+
+    <div class="details">
+        <h2>A Royal Invitation</h2>
+        <p style="color: #666; line-height: 2;">
+            With the blessings of our elders and the grace of the divine,<br> 
+            we invite you to witness our union as we weave our lives into a single tapestry of love.
+        </p>
+        <p style="margin-top: 20px; font-weight: bold;">THE RAJ PALACE | CHENNAI</p>
+        <a href="#" class="btn-royal">Confirm Attendance</a>
+    </div>
+
+</body>
+</html>
+

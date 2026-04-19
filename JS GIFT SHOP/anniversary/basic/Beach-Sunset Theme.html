@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beach Sunset | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,400;1,700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            /* Sunset to Ocean Gradient */
+            background: linear-gradient(180deg, #ff9068 0%, #ff4b2b 30%, #004e92 100%);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .serif-italic { font-family: 'Bodoni Moda', serif; }
+
+        /* The "Sea Foam" Glass Card */
+        .sunset-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 60px 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Animated Sun Glow */
+        .sun-glow {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: #ffdb6d;
+            filter: blur(80px);
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .btn-beach {
+            background: #ffffff;
+            color: #004e92;
+            padding: 14px 28px;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 800;
+            transition: all 0.4s ease;
+        }
+
+        .btn-beach:hover {
+            background: #ffdb6d;
+            color: #ff4b2b;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .wave-accent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            opacity: 0.2;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sunset-card">
+        <div class="sun-glow"></div>
+        
+        <header class="mb-10">
+            <p class="text-[9px] tracking-[0.6em] uppercase text-orange-200 mb-4">Under the Golden Sky</p>
+            <h1 class="serif-italic text-5xl mb-2">Alex & Jordan</h1>
+            <div class="h-[1px] w-12 bg-white/40 mx-auto my-6"></div>
+            <p class="text-xs tracking-[0.3em] uppercase opacity-80">Ninth Anniversary</p>
+        </header>
+
+        <main class="space-y-8">
+            <p class="text-sm leading-relaxed text-white/90 font-light italic">
+                "Our love is like the tide—it always finds its way back to the shore. Nine years of sunrises, sunsets, and everything in between."
+            </p>
+
+            <div class="pt-8 space-y-4">
+                <button class="btn-beach w-full">Sunset Dinner Fund ($5)</button>
+                <button class="text-[9px] uppercase tracking-[0.4em] text-orange-200 hover:text-white transition-colors">
+                    Ice Cream on the Pier ($3)
+                </button>
+            </div>
+        </main>
+
+        <footer class="mt-16">
+            <p class="text-[8px] tracking-[0.5em] uppercase opacity-40">April 2026 • Year 09</p>
+        </footer>
+    </div>
+
+    <div class="wave-accent"></div>
+
+</body>
+</html>

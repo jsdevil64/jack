@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Interactive Birthday Card</title>
+    <style>
+        :root {
+            --card-width: 340px;
+            --card-height: 480px;
+            --bg-color: #0f0f12;
+            --accent-gold: #e2b04a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px; /* Crucial for 3D depth */
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        /* 3D Wrapper */
+        .card-container {
+            width: var(--card-width);
+            height: var(--card-height);
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        /* The Card Body */
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #23232e 0%, #111119 100%);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform-style: preserve-3d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+        }
+
+        /* The 3D Floating Elements */
+        .card-content {
+            transform: translateZ(80px); /* Pushes text forward in 3D space */
+            transform-style: preserve-3d;
+        }
+
+        .icon-box {
+            font-size: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 20px 20px rgba(0,0,0,0.5));
+            transform: translateZ(50px); /* Medium depth */
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.2rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transform: translateZ(60px);
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .line {
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin: 20px auto;
+            transform: translateZ(40px);
+        }
+
+        p {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            line-height: 1.6;
+            transform: translateZ(30px);
+        }
+
+        /* Glossy Reflection Overlay */
+        .shine {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Floating background particles */
+        .bg-glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-gold);
+            filter: blur(120px);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: -1;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="card-container" id="card">
+        <div class="card">
+            <div class="shine"></div>
+            <div class="card-content">
+                <div class="icon-box">🎈</div>
+                <h1>Happy<br>Birthday</h1>
+                <div class="line"></div>
+                <p>An extraordinary wish for an extraordinary person. Float through your day with joy.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        const motionMatchMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        // Add movement only if user hasn't disabled animations
+        if (!motionMatchMedia.matches) {
+            document.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const { innerWidth, innerHeight } = window;
+
+                // Calculate rotation based on mouse position
+                // Max rotation of 15 degrees
+                const rotateX = (innerHeight / 2 - clientY) / 20;
+                const rotateY = (clientX - innerWidth / 2) / 20;
+
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            // Reset position when mouse leaves
+            document.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            });
+        }
+    </script>
+</body>
+</html>
+

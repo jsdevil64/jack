@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Scratch Reveal</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Georgia', serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 320px;
+            height: 450px;
+            user-select: none;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+        }
+
+        /* The Hidden Content Layer */
+        .reveal-card {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #333;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 8px solid var(--gold);
+        }
+
+        .reveal-card h2 { color: var(--gold); margin-bottom: 10px; }
+        .reveal-card p { font-size: 1.2rem; line-height: 1.4; }
+        .reveal-card .prize { 
+            font-size: 2rem; 
+            font-weight: bold; 
+            margin-top: 15px;
+            background: #eee;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px dashed #ccc;
+        }
+
+        /* The Scratch Canvas */
+        #scratch-canvas {
+            position: absolute;
+            inset: 0;
+            cursor: crosshair;
+            border-radius: 15px;
+            z-index: 10;
+            touch-action: none;
+        }
+
+        .instructions {
+            margin-top: 25px;
+            font-style: italic;
+            color: var(--gold);
+            letter-spacing: 1px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="margin-bottom: 10px;">A Special Surprise...</h1>
+    
+    <div class="container">
+        <div class="reveal-card">
+            <h2>Happy Birthday!</h2>
+            <p>Your special wish for today is:</p>
+            <div class="prize">✨ ALL-YOU-CAN-EAT DINNER ✨</div>
+            <p style="font-size: 0.9rem; margin-top: 20px;">Redeemable immediately!</p>
+        </div>
+
+        <canvas id="scratch-canvas" width="320" height="450"></canvas>
+    </div>
+
+    <p class="instructions" id="hint">Scratch the card to reveal your gift!</p>
+
+    <script>
+        const canvas = document.getElementById('scratch-canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        let isDrawing = false;
+
+        function init() {
+            // Create a premium "Silver/Gold Silk" texture for the scratch layer
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#a1a1a1');
+            gradient.addColorStop(0.5, '#e0e0e0');
+            gradient.addColorStop(1, '#888888');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Add some "noise" to make it look like real scratch-off material
+            for (let i = 0; i < 500; i++) {
+                ctx.fillStyle = 'rgba(255,255,255,0.1)';
+                ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 2, 2);
+            }
+
+            // Text on the scratch surface
+            ctx.fillStyle = "#555";
+            ctx.font = "bold 20px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText("SCRATCH HERE", canvas.width/2, canvas.height/2);
+        }
+
+        function scratch(e) {
+            if (!isDrawing) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(x, y, 30, 0, Math.PI * 2);
+            ctx.fill();
+
+            checkScratchPercentage();
+        }
+
+        function checkScratchPercentage() {
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imageData.data;
+            let clearPixels = 0;
+
+            for (let i = 3; i < pixels.length; i += 4) {
+                if (pixels[i] === 0) clearPixels++;
+            }
+
+            const percentage = (clearPixels / (pixels.length / 4)) * 100;
+            
+            if (percentage > 50) {
+                canvas.style.transition = "opacity 1s ease";
+                canvas.style.opacity = "0";
+                document.getElementById('hint').innerText = "Congratulations!";
+                setTimeout(() => canvas.remove(), 1000);
+            }
+        }
+
+        canvas.addEventListener('mousedown', () => isDrawing = true);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mousemove', scratch);
+        
+        canvas.addEventListener('touchstart', (e) => { isDrawing = true; e.preventDefault(); });
+        canvas.addEventListener('touchend', () => isDrawing = false);
+        canvas.addEventListener('touchmove', (e) => { scratch(e); e.preventDefault(); });
+
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boho Anniversary | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --clay: #b07d62;
+            --sage: #8a9a5b;
+            --cream: #f9f6f0;
+            --charcoal: #3e3e3e;
+        }
+
+        body {
+            background-color: var(--cream);
+            /* Subtle linen texture overlay */
+            background-image: url("https://www.transparenttextures.com/patterns/linen-paper.png");
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .serif-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+        /* Arched Photo Frame */
+        .boho-frame {
+            width: 280px;
+            height: 400px;
+            margin: 0 auto 40px;
+            background: #e2e2e2;
+            border-radius: 140px 140px 20px 20px; /* The Signature Boho Arch */
+            overflow: hidden;
+            border: 8px solid #ffffff;
+            box-shadow: 0 20px 40px rgba(176, 125, 98, 0.15);
+            position: relative;
+        }
+
+        /* Decorative Botanical Line Art (CSS-based) */
+        .leaf-accent {
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.15;
+            color: var(--sage);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .btn-boho {
+            background-color: var(--clay);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 2px;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .btn-boho:hover {
+            background-color: var(--sage);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(138, 154, 91, 0.2);
+        }
+
+        .divider {
+            width: 1px;
+            height: 60px;
+            background: var(--clay);
+            margin: 30px auto;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="leaf-accent" style="top: -20px; left: -20px; transform: rotate(-15deg);">🌿</div>
+    <div class="leaf-accent" style="bottom: 100px; right: -20px; transform: rotate(160deg);">🍃</div>
+
+    <div class="container">
+        <header class="mb-12">
+            <p class="text-[10px] tracking-[0.6em] uppercase text-stone-400 mb-6">Volume Ten • The Earth Issue</p>
+            <h1 class="serif-italic text-5xl mb-4 text-[#b07d62]">Alex & Jordan</h1>
+            <p class="text-xs tracking-[0.2em] font-light italic">Wild & Free Since 2016</p>
+        </header>
+
+        <div class="boho-frame">
+            <div class="w-full h-full flex items-center justify-center text-stone-400 italic bg-[#ede8e1]">
+                [ Insert Arch Photo ]
+            </div>
+        </div>
+
+        <main class="space-y-8">
+            <div class="divider"></div>
+            
+            <p class="serif-italic text-2xl leading-relaxed px-4 text-stone-700">
+                "Like eucalyptus and sage, our love is evergreen and deeply rooted."
+            </p>
+
+            <div class="pt-8 space-y-5">
+                <div>
+                    <span class="block text-[9px] uppercase tracking-widest mb-4 opacity-50">Botanical Garden Fund</span>
+                    <a href="#" class="btn-boho">Contribute $15.00</a>
+                </div>
+                <a href="#" class="text-[10px] font-bold uppercase tracking-[0.4em] text-stone-400 hover:text-[#b07d62] transition-colors">
+                    Iced Oat Latte ($6.00)
+                </a>
+            </div>
+        </main>
+
+        <footer class="mt-20">
+            <p class="text-[8px] tracking-[0.5em] uppercase opacity-30">Rooted in Love • 2026</p>
+        </footer>
+    </div>
+
+</body>
+</html>

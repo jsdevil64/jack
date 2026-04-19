@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding | Alex & Jordan</title>
+    <style>
+        :root { --gold: #b89c6d; --dark: #2c3e50; --bg: #f9f9f9; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); margin: 0; padding: 0; text-align: center; }
+
+        /* Language Toggle Bar */
+        .lang-bar {
+            background: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            margin: 0 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lang-btn.active { background: var(--gold); color: white; }
+
+        /* Main Content */
+        .hero { padding: 80px 20px; }
+        h1 { font-family: 'Georgia', serif; font-size: 3rem; margin-bottom: 10px; }
+        .details { font-size: 1.2rem; color: #666; margin-bottom: 40px; }
+
+        .card {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Language visibility logic */
+        [lang="ta"] { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="lang-bar">
+        <button class="lang-btn active" onclick="setLang('en')">English</button>
+        <button class="lang-btn" onclick="setLang('ta')">தமிழ்</button>
+    </div>
+
+    <section class="hero">
+        <h1 class="lang" data-en="Alex & Jordan" data-ta="அலெக்ஸ் மற்றும் ஜோர்டான்">Alex & Jordan</h1>
+        <p class="details lang" data-en="Are getting married!" data-ta="திருமணம் செய்துகொள்கிறார்கள்!">Are getting married!</p>
+    </section>
+
+    <div class="card">
+        <h3 class="lang" data-en="When & Where" data-ta="எப்பொழுது மற்றும் எங்கே">When & Where</h3>
+        <p class="lang" 
+           data-en="August 22, 2026 • 4:00 PM" 
+           data-ta="ஆகஸ்ட் 22, 2026 • மாலை 4:00 மணி">
+           August 22, 2026 • 4:00 PM
+        </p>
+        <p class="lang" 
+           data-en="The Grand Plaza, Chennai" 
+           data-ta="தி கிராண்ட் பிளாசா, சென்னை">
+           The Grand Plaza, Chennai
+        </p>
+    </div>
+
+    <div class="card">
+        <h3 class="lang" data-en="A Note to Our Guests" data-ta="எங்கள் விருந்தினர்களுக்கு ஒரு குறிப்பு">A Note to Our Guests</h3>
+        <p class="lang" 
+           data-en="We are so happy to have you with us. Please RSVP by July 1st." 
+           data-ta="நீங்கள் எங்களுடன் இருப்பதில் நாங்கள் மிக்க மகிழ்ச்சி அடைகிறோம். தயவுசெய்து ஜூலை 1 ஆம் தேதிக்குள் உங்கள் வருகையை உறுதிப்படுத்தவும்.">
+           We are so happy to have you with us. Please RSVP by July 1st.
+        </p>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            // Update Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update Text
+            document.querySelectorAll('.lang').forEach(el => {
+                const translation = el.getAttribute(`data-${lang}`);
+                if (translation) {
+                    el.innerText = translation;
+                }
+            });
+            
+            // Optional: Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>

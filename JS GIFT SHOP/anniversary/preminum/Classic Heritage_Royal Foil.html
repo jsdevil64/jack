@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Heritage | Anniversary v26.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;600&family=JetBrains+Mono&family=Cinzel:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-burgundy: #450a0a;
+            --royal-gold: #d4af37;
+            --foil-light: #f9f295;
+            --obsidian: #0a0a0a;
+        }
+
+        body {
+            background-color: var(--obsidian);
+            background-image: 
+                radial-gradient(circle at center, var(--royal-burgundy) 0%, var(--obsidian) 100%);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .royal-font { font-family: 'Cinzel', serif; }
+
+        /* Royal Gold Foil Text */
+        .gold-foil {
+            background: linear-gradient(
+                45deg, 
+                #926d27 0%, 
+                #d4af37 25%, 
+                #f9f295 50%, 
+                #d4af37 75%, 
+                #926d27 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: foil-shimmer 6s linear infinite;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+        }
+
+        @keyframes foil-shimmer {
+            to { background-position: 200% center; }
+        }
+
+        /* The Heritage Monolith */
+        .heritage-card {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 80px 50px;
+            width: 90%;
+            max-width: 550px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+        }
+
+        /* Ornamental Corners */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--royal-gold);
+            opacity: 0.6;
+        }
+        .top-l { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .bottom-r { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+        .cta-royal {
+            background: transparent;
+            border: 1px solid var(--royal-gold);
+            color: var(--royal-gold);
+            position: relative;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+
+        .cta-royal:hover {
+            background: var(--royal-gold);
+            color: var(--obsidian);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            letter-spacing: 0.4em;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="heritage-card">
+        <div class="corner top-l"></div>
+        <div class="corner bottom-r"></div>
+
+        <header class="mb-14">
+            <p class="mono text-[8px] text-stone-500 uppercase tracking-[1em] mb-6">Catalog_Ref // MSR-DXB-26</p>
+            <h1 class="royal-font text-5xl md:text-6xl font-black leading-none gold-foil">
+                THE ROYAL <br>ARCHIVE.
+            </h1>
+            <div class="h-[1px] w-12 bg-stone-700 mx-auto mt-8"></div>
+        </header>
+
+        <section class="mb-14 space-y-6">
+            <p class="text-[11px] mono uppercase tracking-[0.4em] text-amber-600/60">Legacy Status: Peerless</p>
+            <p class="text-sm leading-relaxed text-stone-400 italic font-light">
+                Commemorating twenty-six years of distinguished service. A fusion of Tamil heritage and global digital architecture.
+            </p>
+        </section>
+
+        <button class="cta-royal w-full py-5 text-[9px] font-bold uppercase tracking-[0.5em]">
+            Access Sovereign Vault ($30)
+        </button>
+
+        <footer class="mt-16 opacity-30">
+            <p class="mono text-[7px] text-stone-500 tracking-[1.5em] uppercase">Heritage-Core • Platinum Tier</p>
+        </footer>
+    </main>
+
+</body>
+</html>

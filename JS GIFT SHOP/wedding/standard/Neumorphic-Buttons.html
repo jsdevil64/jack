@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex & Jordan | Wedding</title>
+    <style>
+        :root {
+            --bg: #e0e5ec;
+            --shadow-light: #ffffff;
+            --shadow-dark: #a3b1c6;
+            --primary-text: #44475a;
+            --accent: #b89c6d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--primary-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 450px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 40px;
+            background: var(--bg);
+            box-shadow: 20px 20px 60px var(--shadow-dark), 
+                        -20px -20px 60px var(--shadow-light);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .date-tag {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        /* Neumorphic Button Style */
+        .neu-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 15px;
+            background: var(--bg);
+            box-shadow: 6px 6px 12px var(--shadow-dark), 
+                        -6px -6px 12px var(--shadow-light);
+            color: var(--primary-text);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        /* The "Pressed" Effect */
+        .neu-btn:active {
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                        inset -4px -4px 8px var(--shadow-light);
+            transform: scale(0.98);
+        }
+
+        .neu-btn:hover {
+            color: var(--accent);
+        }
+
+        /* Small Neumorphic Card for Details */
+        .detail-card {
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            background: var(--bg);
+            box-shadow: inset 2px 2px 5px var(--shadow-dark), 
+                        inset -2px -2px 5px var(--shadow-light);
+            color: #777;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <span class="date-tag">October 24, 2026</span>
+        <h1>Alex & Jordan</h1>
+        <p style="font-size: 0.9rem; margin-bottom: 30px; opacity: 0.8;">We're making it official and we want you there!</p>
+
+        <a href="#rsvp" class="neu-btn">RSVP ONLINE</a>
+        <a href="#location" class="neu-btn">VIEW LOCATION</a>
+        <a href="#registry" class="neu-btn">GIFT REGISTRY</a>
+
+        <div class="detail-card">
+            📍 Grand Palace, Chennai • 5:00 PM
+        </div>
+    </div>
+
+</body>
+</html>

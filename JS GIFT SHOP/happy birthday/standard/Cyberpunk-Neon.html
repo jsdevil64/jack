@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Neon Birthday</title>
+    <style>
+        :root {
+            --neon-pink: #ff0055;
+            --neon-blue: #00f2ff;
+            --bg-dark: #050505;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif; /* A popular sci-fi font */
+            overflow: hidden;
+            /* Subtle grid background */
+            background-image: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05)),
+                linear-gradient(to right, #111 1px, transparent 1px),
+                linear-gradient(to bottom, #111 1px, transparent 1px);
+            background-size: 100% 2px, 3px 100%, 40px 40px, 40px 40px;
+        }
+
+        .neon-container {
+            text-align: center;
+            padding: 60px;
+            border: 4px solid var(--neon-blue);
+            border-radius: 10px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.8);
+            /* Outer glow for the box */
+            box-shadow: 0 0 15px var(--neon-blue), 
+                        inset 0 0 15px var(--neon-blue);
+            /* Hard geometric "cut" corners */
+            clip-path: polygon(0 15%, 5% 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 4rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            /* Multi-layered Neon Glow */
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-pink),
+                0 0 40px var(--neon-pink),
+                0 0 80px var(--neon-pink);
+        }
+
+        /* The "Broken" Flickering Letter */
+        .flicker {
+            animation: flicker 3s linear infinite;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+                opacity: 0.3;
+            }
+        }
+
+        p {
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            letter-spacing: 5px;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Corner accents */
+        .tag {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            color: var(--neon-blue);
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+
+        .btn {
+            margin-top: 40px;
+            background: transparent;
+            border: 2px solid var(--neon-pink);
+            color: var(--neon-pink);
+            padding: 15px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .btn:hover {
+            background: var(--neon-pink);
+            color: #000;
+            box-shadow: 0 0 30px var(--neon-pink);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="neon-container">
+        <div class="tag">SYSTEM_READY // 2026</div>
+        <h1>HAPP<span class="flicker">Y</span><br>BIRTHDAY</h1>
+        <p>INITIATING CELEBRATION_SEQUENCE...</p>
+        <button class="btn">Override System</button>
+    </div>
+
+</body>
+</html>
+

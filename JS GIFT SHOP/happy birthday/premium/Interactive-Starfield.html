@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Cosmic Birthday</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #ui-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .title {
+            font-size: 5rem;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            opacity: 0;
+            filter: blur(10px);
+            transition: all 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #adadad;
+            letter-spacing: 5px;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 3s 1s ease;
+        }
+
+        .active .title {
+            opacity: 1;
+            filter: blur(0);
+            letter-spacing: 8px;
+        }
+
+        .active .subtitle {
+            opacity: 1;
+        }
+
+        #instructions {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ui-overlay">
+        <div class="title" id="main-text">Happy Birthday</div>
+        <div class="subtitle">TO THE BRIGHTEST STAR IN THE GALAXY</div>
+    </div>
+
+    <div id="instructions">Move your mouse to navigate the void</div>
+
+    <canvas id="starfield"></canvas>
+
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        const overlay = document.getElementById('ui-overlay');
+
+        let width, height, stars = [];
+        const STAR_COUNT = 800;
+        const SPEED_LIMIT = 15;
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetSpeed = 2;
+        let currentSpeed = 2;
+
+        class Star {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = (Math.random() - 0.5) * width;
+                this.y = (Math.random() - 0.5) * height;
+                this.z = Math.random() * width;
+                this.px = this.x;
+                this.py = this.y;
+            }
+
+            update() {
+                this.px = this.x;
+                this.py = this.y;
+                
+                // Movement logic
+                this.z -= currentSpeed;
+                
+                if (this.z < 1) {
+                    this.reset();
+                    this.z = width;
+                }
+            }
+
+            draw() {
+                // 3D Projection
+                let x = (this.x - mouseX * 0.2) * (width / this.z);
+                let y = (this.y - mouseY * 0.2) * (width / this.z);
+                
+                let s = (1 - this.z / width) * 3;
+                
+                ctx.beginPath();
+                ctx.white;
+                ctx.fillStyle = `rgba(255, 255, 255, ${1 - this.z/width})`;
+                ctx.arc(x + width/2, y + height/2, s, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            stars = [];
+            for (let i = 0; i < STAR_COUNT; i++) {
+                stars.push(new Star());
+            }
+
+            // Trigger the reveal after 1 second
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 1000);
+        }
+
+        function animate() {
+            // Motion blur effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+            ctx.fillRect(0, 0, width, height);
+
+            // Smooth speed transition
+            currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX - width / 2;
+            mouseY = e.clientY - height / 2;
+            // Increase speed when moving mouse
+            targetSpeed = 8;
+            
+            // Return to cruise speed after a delay
+            clearTimeout(window.speedTimer);
+            window.speedTimer = setTimeout(() => targetSpeed = 2, 500);
+        });
+
+        window.addEventListener('resize', init);
+        
+        // Touch support
+        window.addEventListener('touchmove', (e) => {
+            mouseX = e.touches[0].clientX - width / 2;
+            mouseY = e.touches[0].clientY - height / 2;
+            targetSpeed = 10;
+        });
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
+

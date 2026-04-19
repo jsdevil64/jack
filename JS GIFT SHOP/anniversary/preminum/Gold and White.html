@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold & White | Anniversary v24.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pure-white: #ffffff;
+            --off-white: #fcfcfc;
+            --gold-base: #d4af37;
+            --gold-light: #f9f295;
+            --gold-dark: #926d27;
+        }
+
+        body {
+            background-color: var(--pure-white);
+            color: #1a1a1a;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Liquid Gold Gradient Effect */
+        .gold-shimmer {
+            background: linear-gradient(
+                to right, 
+                var(--gold-dark) 0%, 
+                var(--gold-light) 50%, 
+                var(--gold-dark) 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Floating Luxury Panel */
+        .luxury-panel {
+            background: var(--off-white);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 0; /* Modern sharp edges */
+            padding: 80px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        /* The Gold Divider */
+        .gold-divider {
+            height: 1px;
+            width: 60px;
+            background: var(--gold-base);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .gold-divider::after {
+            content: "•";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold-base);
+            background: var(--off-white);
+            padding: 0 10px;
+        }
+
+        .cta-btn-gold {
+            border: 1px solid var(--gold-base);
+            color: var(--gold-dark);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            background: transparent;
+        }
+
+        .cta-btn-gold:hover {
+            background: var(--gold-base);
+            color: white;
+            letter-spacing: 0.5em;
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <main class="luxury-panel">
+        <header class="mb-12">
+            <p class="mono text-[9px] text-stone-400 uppercase tracking-[0.8em] mb-4">Edition_25 // Prestige</p>
+            <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-none mb-2 gold-shimmer">
+                GOLDEN <br>LEGACY.
+            </h1>
+            <div class="gold-divider"></div>
+            <p class="text-[10px] mono uppercase tracking-widest text-stone-500 italic mt-6">Quarter Century // Dubai Archive</p>
+        </header>
+
+        <section class="mb-12">
+            <p class="text-sm leading-relaxed text-stone-600 max-w-xs mx-auto">
+                A celebration of <span class="text-stone-900 font-bold">25 Years</span> defined by excellence, innovation, and an unwavering commitment to the craft.
+            </p>
+        </section>
+
+        <button class="cta-btn-gold w-full py-5 text-[10px] font-bold uppercase tracking-[0.4em]">
+            Access Anniversary Vault ($30)
+        </button>
+
+        <footer class="mt-16 opacity-40">
+            <div class="flex justify-center gap-6 mb-4">
+                <div class="w-2 h-2 rounded-full border border-gold-dark"></div>
+                <div class="w-2 h-2 rounded-full bg-gold-base"></div>
+                <div class="w-2 h-2 rounded-full border border-gold-dark"></div>
+            </div>
+            <p class="mono text-[7px] text-stone-400 tracking-[1em] uppercase">Aurum-Protocol • 2026 Edition</p>
+        </footer>
+    </main>
+
+</body>
+</html>
+

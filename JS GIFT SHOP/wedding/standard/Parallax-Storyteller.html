@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Alex & Jordan</title>
+    <style>
+        :root {
+            --white: #ffffff;
+            --black: #1a1a1a;
+            --gold: #d4af37;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body, html {
+            height: 100%;
+            font-family: 'Playfair Display', serif;
+            color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        /* The Parallax Containers */
+        .parallax {
+            position: relative;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Story Section Images - Replace with your own links */
+        .bg1 { background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1500'); }
+        .bg2 { background-image: url('https://images.unsplash.com/photo-1519225495810-753b551f928b?q=80&w=1500'); }
+        .bg3 { background-image: url('https://images.unsplash.com/photo-1522673607200-1648832cee98?q=80&w=1500'); }
+
+        /* The "Floating" Text Cards */
+        .story-card {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--black);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 2px;
+        }
+
+        .title-hero {
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            letter-spacing: 5px;
+        }
+
+        .chapter-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        p { font-family: 'Inter', sans-serif; line-height: 1.8; color: #555; }
+
+        .btn-scroll {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--black);
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-scroll:hover { background: var(--black); color: var(--white); }
+
+        /* Mobile Fix */
+        @media (max-width: 768px) {
+            .parallax { background-attachment: scroll; } /* Better performance on mobile */
+            .title-hero { font-size: 2.5rem; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="parallax bg1">
+        <h1 class="title-hero">Alex & Jordan</h1>
+    </div>
+
+    <div class="parallax" style="background: #fff;">
+        <div class="story-card">
+            <span class="chapter-num">CHAPTER ONE</span>
+            <h2>The First Meeting</h2>
+            <p>It started with a shared coffee and a conversation that lasted five hours. We knew then that this wasn't just another Tuesday—it was the start of everything.</p>
+            <a href="#chap2" class="btn-scroll">KEEP READING</a>
+        </div>
+    </div>
+
+    <div id="chap2" class="parallax bg2"></div>
+
+    <div class="parallax" style="background: #fafafa;">
+        <div class="story-card">
+            <span class="chapter-num">CHAPTER TWO</span>
+            <h2>The Proposal</h2>
+            <p>Under a canopy of stars in the mountains, we promised each other forever. Now, we want you to be there as we say the words for real.</p>
+            <a href="#chap3" class="btn-scroll">SEE THE DATE</a>
+        </div>
+    </div>
+
+    <div id="chap3" class="parallax bg3">
+        <div class="story-card" style="background: rgba(26,26,26,0.95); color: white;">
+            <h2 style="color: var(--gold);">The Big Day</h2>
+            <p style="color: #ccc;">August 22, 2026<br>The Grand Atrium, NYC</p>
+            <a href="#rsvp" class="btn-scroll" style="border-color: var(--gold); color: var(--gold);">RSVP NOW</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under the Stars | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesque:wght@300;700&family=Birthstone&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at center, #1e1b4b 0%, #020617 100%);
+            color: #f8fafc;
+            font-family: 'Space Grotesque', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .cursive { font-family: 'Birthstone', cursive; }
+
+        /* The Celestial Card */
+        .cosmic-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 60px 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            border-radius: 30px;
+            box-shadow: 0 0 50px rgba(99, 102, 241, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Twinkling Star */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px white; }
+        }
+
+        .btn-lunar {
+            background: #f8fafc;
+            color: #020617;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: 0.4s;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-lunar:hover {
+            background: #818cf8;
+            color: white;
+            box-shadow: 0 0 30px rgba(129, 140, 248, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .moon-glow {
+            text-shadow: 0 0 15px rgba(248, 250, 252, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="star" style="top: 10%; left: 20%; width: 2px; height: 2px;"></div>
+    <div class="star" style="top: 30%; left: 80%; width: 3px; height: 3px; animation-delay: 1s;"></div>
+    <div class="star" style="top: 70%; left: 15%; width: 2px; height: 2px; animation-delay: 2s;"></div>
+    <div class="star" style="top: 85%; left: 60%; width: 3px; height: 3px; animation-delay: 1.5s;"></div>
+
+    <div class="cosmic-card">
+        <header class="mb-10">
+            <p class="text-[9px] tracking-[0.6em] uppercase text-indigo-300 mb-4">A Love Beyond the Skyline</p>
+            <h1 class="cursive text-6xl moon-glow">Alex & Jordan</h1>
+            <div class="h-[1px] w-20 bg-indigo-500 mx-auto my-6 opacity-40"></div>
+            <p class="text-xs tracking-[0.3em] uppercase opacity-60">The Fifth Anniversary</p>
+        </header>
+
+        <main class="space-y-8">
+            <p class="text-sm leading-relaxed text-indigo-100/70 font-light">
+                "In a universe of billions, my heart found its way to yours. Five years later, you're still my favorite star to watch."
+            </p>
+
+            <div class="pt-8 space-y-5">
+                <button class="btn-lunar w-full">Moonlight Dinner Fund ($5)</button>
+                <button class="text-[9px] uppercase tracking-[0.4em] text-indigo-400 hover:text-white transition-colors">
+                    Stargazing Coffee ($3)
+                </button>
+            </div>
+        </main>
+
+        <footer class="mt-16">
+            <p class="text-[8px] tracking-[0.5em] uppercase opacity-20">Across the Galaxy • Year 05</p>
+        </footer>
+    </div>
+
+</body>
+</html>

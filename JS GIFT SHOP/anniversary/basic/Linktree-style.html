@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Anniversary Hub | A & J</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            /* Smooth, romantic gradient background */
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+            color: #2d3436;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        /* Profile Image Container */
+        .profile-ring {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            padding: 4px;
+            background: #ffffff;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fdf2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        /* Glassmorphism Link Style */
+        .link-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 16px;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: block;
+            text-decoration: none;
+            color: #4a4a4a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .link-card:hover {
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .primary-link {
+            background: #ffffff;
+            color: #ff6b6b;
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+        }
+
+        /* Floating Hearts Animation Background */
+        .bg-hearts {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-hearts text-white text-2xl">
+        <span style="position: absolute; top: 10%; left: 10%;">❤️</span>
+        <span style="position: absolute; top: 40%; left: 80%;">✨</span>
+        <span style="position: absolute; top: 80%; left: 20%;">💖</span>
+    </div>
+
+    <div class="w-full max-w-sm flex flex-col items-center">
+        <div class="profile-ring">
+            <div class="profile-img">💑</div>
+        </div>
+        
+        <h1 class="text-2xl font-bold mb-1">Alex & Jordan</h1>
+        <p class="text-sm font-medium text-white/80 mb-10 tracking-wide">365 Days of Love & Adventure</p>
+
+        <div class="w-full space-y-4">
+            <a href="#" class="link-card primary-link">
+                🥂 Anniversary Dinner Fund ($5)
+            </a>
+            
+            <a href="#" class="link-card">
+                📸 View Our First Year Photos
+            </a>
+            
+            <a href="#" class="link-card">
+                ☕️ Buy Us a Morning Coffee ($3)
+            </a>
+            
+            <a href="#" class="link-card opacity-80">
+                💬 Leave a Sweet Note
+            </a>
+        </div>
+
+        <footer class="mt-16 text-center">
+            <p class="text-[10px] text-white/60 uppercase tracking-[0.4em] font-bold">
+                EST. APRIL 2025 • ANNIVERSARY EDITION
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>திருமண அழைப்பிதழ் | Alex & Jordan</title>
+    <style>
+        :root {
+            --kumkum-red: #8e1b1b;
+            --sandal-wood: #f4e4bc;
+            --gold-border: #d4af37;
+            --deep-charcoal: #1a1c20;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--sandal-wood);
+            color: var(--deep-charcoal);
+            font-family: 'Inter', 'Arima', sans-serif;
+            line-height: 1.8;
+        }
+
+        /* Traditional Temple Border */
+        .page-frame {
+            position: fixed;
+            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            border: 2px solid var(--gold-border);
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .corner {
+            position: absolute;
+            width: 40px; height: 40px;
+            border: 4px solid var(--kumkum-red);
+        }
+        .top-left { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+        .top-right { top: -5px; right: -5px; border-left: 0; border-bottom: 0; }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(244, 228, 188, 0.8), rgba(244, 228, 188, 0.8)),
+                        url('https://images.unsplash.com/photo-1595928642581-f50f4f3453a5?q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .om-symbol {
+            font-size: 2.5rem;
+            color: var(--kumkum-red);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--kumkum-red);
+            margin-bottom: 10px;
+        }
+
+        .tamil-title {
+            font-family: 'Arima', cursive;
+            font-size: 1.8rem;
+            color: var(--deep-charcoal);
+            letter-spacing: 2px;
+        }
+
+        /* Invitation Content */
+        .invitation-body {
+            max-width: 800px;
+            margin: -50px auto 100px;
+            background: white;
+            padding: 80px 40px;
+            text-align: center;
+            box-shadow: 0 40px 100px rgba(142, 27, 27, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .flower-divider {
+            font-size: 1.5rem;
+            margin: 30px 0;
+            color: var(--gold-border);
+        }
+
+        .event-details {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--kumkum-red);
+            margin: 20px 0;
+            text-transform: uppercase;
+        }
+
+        .btn-tamil {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 45px;
+            background: var(--kumkum-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            border: 2px solid var(--gold-border);
+        }
+
+        .btn-tamil:hover {
+            background: var(--gold-border);
+            color: var(--kumkum-red);
+            transform: scale(1.05);
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;700&family=Inter:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page-frame">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+    </div>
+
+    <section class="hero">
+        <div class="om-symbol">ௐ</div>
+        <h1 id="names-en">Alex & Jordan</h1>
+        <div class="tamil-title">திருமண அழைப்பிதழ்</div>
+    </section>
+
+    <main class="invitation-body">
+        <p style="font-family: 'Arima'; font-size: 1.2rem;">
+            பெரியோர்களின் ஆசியுடன் நடைபெறும் எங்களது திருமண விழாவிற்கு தங்களை அன்புடன் அழைக்கிறோம்.
+        </p>
+        
+        <div class="flower-divider">❀ ✺ ❀</div>
+
+        <p class="event-details">
+            முகூர்த்தம் (MUHURTHAM)<br>
+            AUG 22, 2026 • 9:00 AM - 10:30 AM
+        </p>
+
+        <p style="margin-bottom: 10px;"><b>VENUE:</b> THE ROYAL HERITAGE HALL</p>
+        <p style="color: #666;">No. 12, Mahabalipuram Road, Chennai</p>
+
+        <a href="#" class="btn-tamil">RSVP - வருகையை உறுதி செய்க</a>
+    </main>
+
+    <footer style="text-align: center; padding-bottom: 80px; opacity: 0.6; font-size: 0.8rem;">
+        With Love, The Families of Alex & Jordan
+    </footer>
+
+</body>
+</html>
+
+

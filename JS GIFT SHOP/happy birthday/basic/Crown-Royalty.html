@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday | Royalty Edition</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0a0a0a; /* 3. Midnight Black */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Times New Roman', serif;
+            overflow: hidden;
+        }
+
+        .throne-room {
+            text-align: center;
+            position: relative;
+        }
+
+        /* 49. Crown / Royalty (The Feature) */
+        .crown {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 20px;
+            /* 12. Metallic / Glittery Effect (Gold Glow) */
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8));
+            animation: float-crown 3s ease-in-out infinite;
+        }
+
+        @keyframes float-crown {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        /* 32. Elegant Serif Typography */
+        h1 {
+            color: #d4af37; /* Gold Accent */
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* 18. Top-only Color Bar (Gold Divider) */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 25px auto;
+        }
+
+        p {
+            font-family: 'Helvetica', sans-serif;
+            color: #888;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="throne-room">
+        <div class="crown">👑</div>
+        <h1>ROYALTY</h1>
+        <div class="divider"></div>
+        <p>REIGNING SINCE 2026</p>
+    </div>
+
+</body>
+</html>
+

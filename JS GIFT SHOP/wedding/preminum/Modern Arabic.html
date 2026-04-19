@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Union | Alex & Jordan</title>
+    <style>
+        :root {
+            --emerald-royal: #064e3b;
+            --sand-dune: #f5e6d3;
+            --liquid-gold: #d4af37;
+            --pattern-opacity: 0.08;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--sand-dune);
+            color: var(--emerald-royal);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Modern Mashrabiya Pattern Overlay */
+        .pattern-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 0l30 30-30 30-30-30z" fill="%23064e3b" fill-opacity="0.05" fill-rule="evenodd"/></svg>');
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        /* The Luxe Invitation Card */
+        .arabic-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            padding: 80px 40px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 40px 80px rgba(6, 78, 59, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* The Calligraphy Icon */
+        .calligraphy-icon {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 2rem;
+            color: var(--liquid-gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .arabic-names {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 1.8rem;
+            color: var(--liquid-gold);
+            margin-bottom: 30px;
+            direction: rtl;
+        }
+
+        .event-info {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 2;
+            margin-bottom: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 20px 0;
+        }
+
+        /* The 'Desert Gold' Button */
+        .btn-luxe {
+            display: inline-block;
+            padding: 16px 50px;
+            background: var(--emerald-royal);
+            color: var(--sand-dune);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .btn-luxe:hover {
+            background: var(--liquid-gold);
+            color: var(--emerald-royal);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Noto+Naskh+Arabic:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="pattern-overlay"></div>
+
+    <main class="arabic-card">
+        <span class="calligraphy-icon">﷽</span>
+        
+        <h1>ALEX & JORDAN</h1>
+        <div class="arabic-names">أليكس و جوردان</div>
+        
+        <div class="event-info">
+            SATURDAY, AUGUST 22, 2026<br>
+            THE PALM ATRIUM<br>
+            19:00 HOURS
+        </div>
+
+        <p style="font-size: 0.8rem; font-style: italic; opacity: 0.7; margin-bottom: 35px;">
+            Celebrating love across borders and through time.
+        </p>
+
+        <a href="#" class="btn-luxe">Accept Invitation</a>
+    </main>
+
+</body>
+</html>
+

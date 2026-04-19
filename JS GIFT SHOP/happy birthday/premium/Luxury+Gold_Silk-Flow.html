@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Gold & Silk Celebration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400&display=swap');
+
+        :root {
+            --gold-primary: #d4af37;
+            --gold-light: #f9e29c;
+            --gold-dark: #a67c00;
+            --deep-black: #050505;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--deep-black);
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #silk-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            pointer-events: none;
+            width: 90%;
+        }
+
+        .brand-subtitle {
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInDown 2s 0.5s forwards;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: white;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff 30%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            opacity: 0;
+            animation: scaleFadeIn 2.5s 1s forwards;
+        }
+
+        .date-line {
+            margin-top: 30px;
+            height: 1px;
+            width: 0;
+            background: var(--gold-primary);
+            display: inline-block;
+            animation: expandLine 2s 2s forwards;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 0.7; transform: translateY(0); }
+        }
+
+        @keyframes scaleFadeIn {
+            from { opacity: 0; transform: scale(0.9); filter: blur(10px); }
+            to { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
+
+        @keyframes expandLine {
+            to { width: 200px; }
+        }
+
+        /* Fine grain texture overlay for "Expensive" feel */
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.03;
+            z-index: 5;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noise"></div>
+    
+    <div class="overlay">
+        <div class="brand-subtitle">Est. MMXXVI</div>
+        <h1>Happy Birthday</h1>
+        <div class="date-line"></div>
+    </div>
+
+    <canvas id="silk-canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('silk-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, threads = [];
+        const threadCount = 18; // Fewer, thicker "ribbons" for luxury look
+        
+        let mouse = { x: -1000, y: -1000 };
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            threads = [];
+            for (let i = 0; i < threadCount; i++) {
+                threads.push(new SilkThread(i));
+            }
+        }
+
+        class SilkThread {
+            constructor(index) {
+                this.index = index;
+                this.points = [];
+                this.pointCount = 15;
+                this.amplitude = 20 + Math.random() * 50;
+                this.frequency = 0.001 + Math.random() * 0.002;
+                this.offset = Math.random() * 1000;
+                
+                for (let i = 0; i < this.pointCount; i++) {
+                    this.points.push({
+                        x: (width / (this.pointCount - 1)) * i,
+                        y: height / 2,
+                        originalY: height / 2 + (index - threadCount / 2) * 40
+                    });
+                }
+            }
+
+            draw() {
+                const time = Date.now() * this.frequency + this.offset;
+                
+                ctx.beginPath();
+                ctx.moveTo(this.points[0].x, this.points[0].y);
+
+                for (let i = 0; i < this.pointCount; i++) {
+                    let p = this.points[i];
+                    
+                    // Wave movement
+                    p.y = p.originalY + Math.sin(time + i * 0.5) * this.amplitude;
+
+                    // Mouse interaction (Silk "clings" or "reacts")
+                    let dx = mouse.x - p.x;
+                    let dy = mouse.y - p.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 200) {
+                        p.y += dy * (200 - dist) / 500;
+                    }
+
+                    if (i > 0) {
+                        let prevP = this.points[i-1];
+                        let xc = (p.x + prevP.x) / 2;
+                        let yc = (p.y + prevP.y) / 2;
+                        ctx.quadraticCurveTo(prevP.x, prevP.y, xc, yc);
+                    }
+                }
+
+                // Gradient per thread
+                let grad = ctx.createLinearGradient(0, 0, width, 0);
+                grad.addColorStop(0, 'transparent');
+                grad.addColorStop(0.3, '#a67c00');
+                grad.addColorStop(0.5, '#f9e29c'); // The "Sheen"
+                grad.addColorStop(0.7, '#d4af37');
+                grad.addColorStop(1, 'transparent');
+
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = 'rgba(212, 175, 55, 0.2)';
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 1.5;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+            }
+        }
+
+        function animate() {
+            // Slight trails for "Softness"
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.15)';
+            ctx.fillRect(0, 0, width, height);
+
+            threads.forEach(t => t.draw());
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('resize', init);
+        init();
+        animate();
+    </script>
+</body>
+</html>

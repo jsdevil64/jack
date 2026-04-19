@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber-Neon 25.0 | Anniversary Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-magenta: #ff00ff;
+            --bg-obsidian: #020202;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Digital Scanlines */
+        body::after {
+            content: " ";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Neon Flicker Animation */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px var(--neon-cyan), 0 0 42px var(--neon-cyan);
+            }
+            20%, 24%, 55% { text-shadow: none; }
+        }
+
+        .neon-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 5rem;
+            letter-spacing: -2px;
+            color: #fff;
+            animation: flicker 3s infinite alternate;
+            line-height: 0.9;
+        }
+
+        /* Interactive Cyber Card */
+        .cyber-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid var(--neon-cyan);
+            padding: 50px;
+            position: relative;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
+            box-shadow: inset 0 0 20px rgba(0, 243, 255, 0.1);
+            transition: 0.4s;
+        }
+
+        .cyber-card:hover {
+            border-color: var(--neon-magenta);
+            box-shadow: 0 0 40px rgba(255, 0, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        /* Glitch Button */
+        .btn-glitch {
+            background: var(--neon-cyan);
+            color: #000;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            padding: 15px 30px;
+            position: relative;
+            transition: 0.2s;
+        }
+
+        .btn-glitch:hover {
+            background: var(--neon-magenta);
+            box-shadow: 5px 0px 0px var(--neon-cyan);
+            color: #fff;
+        }
+
+        .corner-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 8px;
+            color: var(--neon-cyan);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="cyber-card text-center">
+        <span class="corner-tag tracking-[0.5em]">SYSTEM_REBOOT // 2026.04.10</span>
+        
+        <header class="mb-10">
+            <p class="text-[9px] text-magenta-500 tracking-[0.8em] mb-4 uppercase text-pink-500">Signal.Detected</p>
+            <h1 class="neon-title uppercase italic">YEAR<br>TWENTY<br>FIVE</h1>
+        </header>
+
+        <div class="mb-10 flex flex-col items-center gap-4">
+            <div class="h-[1px] w-20 bg-cyan-500 shadow-[0_0_10px_#00f3ff]"></div>
+            <p class="text-xs text-stone-400 max-w-xs italic leading-relaxed">
+                Hyper-linked memories. Merging Musiri origins with Dubai's high-fidelity future. 
+            </p>
+        </div>
+
+        <button class="btn-glitch text-[10px]">
+            Initialize Party ($30)
+        </button>
+
+        <footer class="mt-12">
+            <p class="text-[7px] text-cyan-900 tracking-[1.5em] uppercase">Cyber-Protocol • Neon-Tier • v25.0</p>
+        </footer>
+    </main>
+
+</body>
+</html>
+

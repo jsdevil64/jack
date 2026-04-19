@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Confetti Rain Birthday</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-white: #ffffff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Confetti Styling */
+        .confetti {
+            position: absolute;
+            z-index: 1;
+            top: -20px;
+            /* Using transform-style for smoother rotations */
+            transform-style: preserve-3d;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(0vh) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotateX(360deg) rotateY(180deg) rotateZ(90deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* Content Overlay */
+        .message-box {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 80px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(45deg, #ff0055, #00fbff, #ffea00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        p {
+            color: var(--text-white);
+            font-size: 1.2rem;
+            margin-top: 15px;
+            opacity: 0.8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .cta {
+            margin-top: 30px;
+            background: white;
+            color: black;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 100px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .cta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="message-box">
+        <h1>Happy<br>Birthday</h1>
+        <p>Let the celebration begin</p>
+        <button class="cta">Cheers!</button>
+    </div>
+
+    <script>
+        const colors = ['#ff0055', '#00fbff', '#ffea00', '#00ff6a', '#7000ff', '#ff8c00'];
+        const confettiCount = 150;
+
+        function createConfetti() {
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Randomize appearance
+                const size = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const isCircle = Math.random() > 0.5;
+
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.backgroundColor = color;
+                confetti.style.borderRadius = isCircle ? '50%' : '2px';
+
+                // Randomize animation physics
+                const leftPos = Math.random() * 100;
+                const duration = Math.random() * 3 + 4; // 4s to 7s
+                const delay = Math.random() * 5;
+                const horizontalSway = (Math.random() * 40) - 20; // -20px to 20px
+
+                confetti.style.left = `${leftPos}%`;
+                confetti.style.animation = `rain ${duration}s linear infinite`;
+                confetti.style.animationDelay = `${delay}s`;
+                
+                // Apply a random initial rotation
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+                document.body.appendChild(confetti);
+            }
+        }
+
+        createConfetti();
+    </script>
+</body>
+</html>

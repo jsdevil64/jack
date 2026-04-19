@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focused - 10 Mini Projects</title>
+    <style>
+        /* Dark Theme Design */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 8px;
+            color: #e0a3ad;
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 2rem;
+            text-shadow: 0 0 15px rgba(228, 111, 132);
+        }
+
+        /* 10 files-aiyum grid-ah vakkurathuku */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .mini-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .mini-card:hover {
+            border-color: #38bdf8;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 134, 187);
+        }
+
+        /* Iframe preview settings */
+        iframe {
+            width: 200%;
+            height: 200%;
+            border: none;
+            pointer-events: none; /* Click panna iframe kulla pogama irukka */
+            zoom: 0.5; /* Preview size-ah kurikka */
+            -moz-transform: scale(0.5);
+            -moz-transform-origin: 0 0;
+        }
+
+        .label {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>STANDAED</h1>
+
+    <div class="grid-container">
+        <div class="mini-card" onclick="window.location.href='standard/Anniversary-red.html'">
+            <iframe src="standard/Anniversary-red.html"></iframe>
+            <div class="label">Anniversary-red</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Classic European.html'">
+            <iframe src="standard/Classic European.html"></iframe>
+            <div class="label">Classic European</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Clean-Typography-Focus.html'">
+            <iframe src="standard/Clean-Typography-Focus.html"></iframe>
+            <div class="label">Clean-Typography-Focus</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Countdown-to_I-Do.html'">
+            <iframe src="standard/Countdown-to_I-Do.html"></iframe>
+            <div class="label">Countdown-to_I-Do</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Elopement-Special.html'">
+            <iframe src="standard/Elopement-Special.html"></iframe>
+            <div class="label">Elopement-Special</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Florist Portfolio.html'">
+            <iframe src="standard/Florist Portfolio.html"></iframe>
+            <div class="label">Florist Portfolio</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/LGBTQ+InclusiveDesigns.html'">
+            <iframe src="standard/LGBTQ+InclusiveDesigns.html"></iframe>
+            <div class="label">LGBTQ+InclusiveDesigns</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Multilingual Support.html'">
+            <iframe src="standard/Multilingual Support.html"></iframe>
+            <div class="label">Multilingual Support</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Neumorphic-Buttons.html'">
+            <iframe src="standard/Neumorphic-Buttons.html"></iframe>
+            <div class="label">Neumorphic-Buttons</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='standard/Parallax-Storyteller.html'">
+            <iframe src="standard/Parallax-Storyteller.html"></iframe>
+            <div class="label">Parallax-Storyteller</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

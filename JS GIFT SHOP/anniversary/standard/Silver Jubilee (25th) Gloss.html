@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Jubilee | 25 Years</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-obsidian: #0a0a0b;
+            /* The 5-stop Silver Gradient */
+            --silver-metal: linear-gradient(135deg, #cfd1d3 0%, #ffffff 25%, #9ba0a3 50%, #ffffff 75%, #cfd1d3 100%);
+            --rim-glow: rgba(207, 209, 211, 0.2);
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .serif-italic { font-family: 'Bodoni Moda', serif; font-style: italic; }
+
+        /* The Main Anniversary Card */
+        .jubilee-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 80px 40px;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 80px var(--rim-glow);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        /* Glossy Silver Text Effect */
+        .silver-gloss {
+            background: var(--silver-metal);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 5.5rem;
+            line-height: 1;
+            font-weight: 700;
+            animation: silver-shine 6s linear infinite;
+        }
+
+        @keyframes silver-shine {
+            to { background-position: 200% center; }
+        }
+
+        /* The Shimmer Reflection */
+        .shimmer-box {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .shimmer-box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -150%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(30deg);
+            animation: sweep 4s infinite;
+        }
+
+        @keyframes sweep {
+            0% { left: -150%; }
+            30%, 100% { left: 150%; }
+        }
+
+        .btn-premium {
+            border: 1px solid #cfd1d3;
+            color: #cfd1d3;
+            padding: 15px 40px;
+            font-size: 10px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 50px;
+            transition: 0.5s;
+            background: transparent;
+        }
+
+        .btn-premium:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 30px white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="jubilee-card">
+        <header class="mb-6">
+            <p class="text-[10px] tracking-[0.8em] text-stone-500 uppercase mb-4">A Quarter Century of Love</p>
+            <div class="shimmer-box">
+                <h1 class="silver-gloss serif-italic">25</h1>
+            </div>
+            <h2 class="text-2xl font-light tracking-[0.3em] uppercase mt-2">Silver Jubilee</h2>
+        </header>
+
+        <main class="space-y-6">
+            <div class="h-[1px] w-12 bg-stone-700 mx-auto"></div>
+            <p class="text-sm text-stone-400 italic leading-relaxed px-10">
+                "Two and a half decades of shared dreams, layered strength, and polished grace."
+            </p>
+            <div class="h-[1px] w-12 bg-stone-700 mx-auto"></div>
+        </main>
+
+        <button class="btn-premium">View The Archive ($15)</button>
+        <p class="text-[8px] text-white/10 uppercase tracking-[0.4em] mt-8">Sterling Tier v1.0 • $6.00</p>
+    </div>
+
+</body>
+</html>

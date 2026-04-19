@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Birthday Fortune Wheel</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-bg: #1a1a1a;
+            --accent: #ff3e3e;
+        }
+
+        body {
+            background: radial-gradient(circle, #2c2c2c, #000);
+            color: white;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
+        }
+
+        /* The "Clacker" or Pointer */
+        .pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 50px;
+            background: var(--gold);
+            clip-path: polygon(50% 100%, 0 0, 100% 0);
+            z-index: 100;
+            border-bottom: 2px solid white;
+        }
+
+        .pointer.clack {
+            animation: clack 0.2s ease;
+        }
+
+        @keyframes clack {
+            0% { transform: translateX(-50%) rotate(0); }
+            50% { transform: translateX(-50%) rotate(-15deg); }
+            100% { transform: translateX(-50%) rotate(0); }
+        }
+
+        #wheel-svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(0deg);
+            transition: transform 5s cubic-bezier(0.15, 0, 0.15, 1);
+        }
+
+        .spin-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            background: white;
+            color: #000;
+            border-radius: 50%;
+            border: 8px solid var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: 0.2s;
+        }
+
+        .spin-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--gold);
+            color: white;
+        }
+
+        .spin-btn:disabled {
+            background: #444;
+            border-color: #222;
+            cursor: not-allowed;
+        }
+
+        #result-display {
+            margin-top: 40px;
+            font-size: 2rem;
+            font-weight: 300;
+            height: 50px;
+            text-align: center;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .birthday-text {
+            position: absolute;
+            top: 50px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="birthday-text">Happy Birthday Fortune</div>
+
+    <div class="wheel-container">
+        <div class="pointer" id="pointer"></div>
+        <button class="spin-btn" id="spinBtn" onclick="spinWheel()">SPIN</button>
+        <svg id="wheel-svg" viewBox="0 0 100 100">
+            </svg>
+    </div>
+
+    <div id="result-display">Spin for a Birthday Surprise!</div>
+
+    <script>
+        const prizes = [
+            { label: "Free Cake", color: "#ff3e3e" },
+            { label: "Huge Hug", color: "#3eafff" },
+            { label: "Secret Gift", color: "#9d50bb" },
+            { label: "Pick Movie", color: "#4caf50" },
+            { label: "New Tech", color: "#ffd700" },
+            { label: "Travel Trip", color: "#ff9800" },
+            { label: "Dinner Out", color: "#00bcd4" },
+            { label: "Wish Granted", color: "#e91e63" }
+        ];
+
+        const svg = document.getElementById('wheel-svg');
+        const spinBtn = document.getElementById('spinBtn');
+        const display = document.getElementById('result-display');
+        const pointer = document.getElementById('pointer');
+        
+        let currentRotation = 0;
+
+        // 1. Draw the Wheel
+        function createWheel() {
+            const numSectors = prizes.length;
+            const angleStep = 360 / numSectors;
+
+            prizes.forEach((prize, i) => {
+                const startAngle = i * angleStep;
+                const endAngle = (i + 1) * angleStep;
+                
+                // SVG Arc Path
+                const x1 = 50 + 50 * Math.cos(Math.PI * startAngle / 180);
+                const y1 = 50 + 50 * Math.sin(Math.PI * startAngle / 180);
+                const x2 = 50 + 50 * Math.cos(Math.PI * endAngle / 180);
+                const y2 = 50 + 50 * Math.sin(Math.PI * endAngle / 180);
+
+                const pathData = `M 50 50 L ${x1} ${y1} A 50 50 0 0 1 ${x2} ${y2} Z`;
+                
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", pathData);
+                path.setAttribute("fill", prize.color);
+                path.setAttribute("stroke", "white");
+                path.setAttribute("stroke-width", "0.5");
+                svg.appendChild(path);
+
+                // Add Text
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                const textAngle = startAngle + angleStep / 2;
+                text.setAttribute("x", "75");
+                text.setAttribute("y", "50");
+                text.setAttribute("fill", "white");
+                text.setAttribute("font-size", "4");
+                text.setAttribute("font-weight", "bold");
+                text.setAttribute("transform", `rotate(${textAngle}, 50, 50)`);
+                text.textContent = prize.label;
+                svg.appendChild(text);
+            });
+        }
+
+        function spinWheel() {
+            spinBtn.disabled = true;
+            display.innerText = "Good Luck...";
+            
+            // Generate a random spin (at least 5 full rotations + random offset)
+            const extraDegrees = Math.floor(Math.random() * 360);
+            const totalSpins = 1800 + extraDegrees; 
+            currentRotation += totalSpins;
+            
+            svg.style.transform = `rotate(${currentRotation}deg)`;
+
+            // Trigger "Clack" animation periodically during spin
+            const clackerInterval = setInterval(() => {
+                pointer.classList.remove('clack');
+                void pointer.offsetWidth; // Trigger reflow
+                pointer.classList.add('clack');
+            }, 150);
+
+            // Calculate the result after the transition ends (5 seconds)
+            setTimeout(() => {
+                clearInterval(clackerInterval);
+                const actualDegrees = currentRotation % 360;
+                
+                // SVG coordinate adjustment (SVG 0deg is at 3 o'clock, we need 12 o'clock)
+                // Result = (360 - (degrees - 90)) % 360
+                const sectorAngle = 360 / prizes.length;
+                const winningIndex = Math.floor(((360 - (actualDegrees % 360) + 270) % 360) / sectorAngle);
+                
+                const finalPrize = prizes[winningIndex].label;
+                display.innerText = `You won: ${finalPrize}! 🥳`;
+                spinBtn.disabled = false;
+            }, 5000);
+        }
+
+        createWheel();
+    </script>
+</body>
+</html>

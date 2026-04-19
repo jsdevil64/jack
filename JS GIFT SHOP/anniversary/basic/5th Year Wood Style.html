@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year Five: Wood | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2c1e14; /* Deep Bark */
+            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+            color: #e5d5c0;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+        }
+
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* Carved Panel Effect */
+        .wood-panel {
+            background: #3e2a1c;
+            border: 4px solid #4d3523;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Decorative "Joinery" Corners */
+        .wood-panel::before {
+            content: '•';
+            position: absolute;
+            top: 10px; left: 10px;
+            font-size: 20px; color: #5d432f;
+        }
+
+        .btn-carved {
+            border: 1px solid #8d6e63;
+            color: #d7ccc8;
+            padding: 12px 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 10px;
+            font-weight: 700;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0,0,0,0.1);
+        }
+
+        .btn-carved:hover {
+            background: #8d6e63;
+            color: #2c1e14;
+            box-shadow: 0 0 15px rgba(141, 110, 99, 0.4);
+        }
+
+        .vertical-grain {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #8d6e63, transparent);
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+
+    <div class="wood-panel text-center">
+        <header class="mb-10">
+            <p class="text-[9px] tracking-[0.5em] uppercase text-amber-200/40 mb-4">Five Years Strong</p>
+            <h1 class="serif text-5xl italic text-amber-50 mb-2">Alex & Jordan</h1>
+            <div class="vertical-grain"></div>
+            <p class="serif text-xl italic opacity-80">Our roots run deep.</p>
+        </header>
+
+        <main class="space-y-10">
+            <div>
+                <span class="text-[9px] uppercase tracking-[0.3em] block mb-4 opacity-50">Plant a tree together</span>
+                <button class="btn-carved">Contribute $5</button>
+            </div>
+
+            <div>
+                <span class="text-[9px] uppercase tracking-[0.3em] block mb-4 opacity-50">Forest hike coffee</span>
+                <button class="btn-carved">Contribute $3</button>
+            </div>
+        </main>
+
+        <footer class="mt-16">
+            <p class="text-[9px] tracking-[0.4em] uppercase opacity-30">Heartwood Edition • April 2026</p>
+        </footer>
+    </div>
+
+</body>
+</html>

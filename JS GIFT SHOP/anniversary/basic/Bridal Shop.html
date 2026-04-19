@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Anniversary Collection | A & J</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #faf9f6; /* Bone White */
+            color: #4a4a4a;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+        }
+
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* Boutique Border Logic */
+        .boutique-frame {
+            border: 1px solid #d1cfc7;
+            padding: 2px;
+            display: inline-block;
+        }
+
+        .boutique-frame-inner {
+            border: 1px solid #d1cfc7;
+            padding: 40px;
+            background: #fff;
+        }
+
+        .btn-bridal {
+            border: 1px solid #4a4a4a;
+            padding: 12px 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 10px;
+            font-weight: 600;
+            transition: 0.4s;
+        }
+
+        .btn-bridal:hover {
+            background: #4a4a4a;
+            color: #fff;
+        }
+
+        .divider {
+            height: 1px;
+            background: #d1cfc7;
+            width: 100px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+
+    <div class="max-w-2xl w-full text-center">
+        <div class="boutique-frame">
+            <div class="boutique-frame-inner">
+                <header class="mb-12">
+                    <p class="text-[10px] tracking-[0.5em] uppercase mb-4 opacity-60">The Anniversary Collection</p>
+                    <h1 class="serif text-5xl italic mb-2">Alex & Jordan</h1>
+                    <div class="divider"></div>
+                    <p class="serif text-xl italic font-light">Celebrating one year of shared elegance.</p>
+                </header>
+
+                <main class="space-y-12">
+                    <div>
+                        <span class="text-[9px] uppercase tracking-[0.3em] block mb-4">Item 01 / Experience</span>
+                        <h3 class="serif text-2xl italic mb-6">Champagne Celebration</h3>
+                        <button class="btn-bridal">Contribute $5</button>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div>
+                        <span class="text-[9px] uppercase tracking-[0.3em] block mb-4">Item 02 / Archive</span>
+                        <h3 class="serif text-2xl italic mb-6">Floral Preservation</h3>
+                        <button class="btn-bridal">Contribute $3</button>
+                    </div>
+                </main>
+
+                <footer class="mt-20">
+                    <p class="serif italic text-stone-400">Curated with love • April 2026</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

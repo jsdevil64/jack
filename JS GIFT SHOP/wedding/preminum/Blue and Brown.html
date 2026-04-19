@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Union | Alex & Jordan</title>
+    <style>
+        :root {
+            --midnight-sapphire: #0f172a; /* Deep, luxury blue */
+            --burnished-copper: #b37a4d;  /* Rich, metallic brown/copper */
+            --tobacco-brown: #3d2b1f;    /* Dark accent brown */
+            --silk-cream: #f8f5f0;       /* Contrast for readability */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--midnight-sapphire);
+            color: var(--silk-cream);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Luxury Silk Texture Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Decorative Copper Frame */
+        .frame {
+            position: fixed;
+            top: 30px; bottom: 30px; left: 30px; right: 30px;
+            border: 1px solid var(--burnished-copper);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .monogram {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--burnished-copper);
+            border: 2px solid var(--burnished-copper);
+            width: 100px; height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            background: rgba(61, 43, 31, 0.4); /* Tobacco brown tint */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            /* Gradient for a "Metallic" text look */
+            background: linear-gradient(to right, #d4af37, var(--burnished-copper), #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--burnished-copper);
+            margin-bottom: 50px;
+        }
+
+        /* Invitation Section */
+        .details-card {
+            background: var(--tobacco-brown);
+            border: 1px solid var(--burnished-copper);
+            max-width: 600px;
+            margin: -10vh auto 100px;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            z-index: 20;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-copper {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 45px;
+            background: transparent;
+            color: var(--burnished-copper);
+            border: 1px solid var(--burnished-copper);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            font-size: 0.7rem;
+            transition: 0.4s;
+        }
+
+        .btn-copper:hover {
+            background: var(--burnished-copper);
+            color: var(--tobacco-brown);
+            box-shadow: 0 0 20px rgba(179, 122, 77, 0.4);
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="frame"></div>
+
+    <section class="hero">
+        <div class="monogram">A&J</div>
+        <h1>Alex & Jordan</h1>
+        <div class="tagline">The Art of Marriage</div>
+    </section>
+
+    <main class="details-card">
+        <div class="event-title">The Evening Gala</div>
+        <p style="opacity: 0.7; line-height: 2; letter-spacing: 1px;">
+            JOIN US FOR AN UNFORGETTABLE CELEBRATION UNDER THE SAPPHIRE SKY. <br>
+            AN EVENING OF ELEGANCE, JAZZ, AND ETERNAL PROMISES.
+        </p>
+        
+        <div style="margin: 40px 0;">
+            <p style="font-weight: bold; color: var(--burnished-copper);">AUGUST 22, 2026</p>
+            <p style="font-size: 0.9rem;">SEVEN O'CLOCK IN THE EVENING</p>
+        </div>
+
+        <p style="font-size: 0.8rem; opacity: 0.6;">THE ESTATE HOUSE • 1200 COPPER RIDGE, NY</p>
+
+        <a href="#" class="btn-copper">Kindly RSVP</a>
+    </main>
+
+    <footer style="text-align: center; padding-bottom: 80px; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">
+        ESTABLISHED 2026 • DESIGNED FOR FOREVER
+    </footer>
+
+</body>
+</html>

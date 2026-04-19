@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Liquid Birthday</title>
+    <style>
+        :root {
+            --color1: #ff3e81; /* Hot Pink */
+            --color2: #4512ff; /* Deep Blue */
+            --color3: #00d2ff; /* Cyan */
+            --color4: #ff9d00; /* Orange */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* The "Liquid" Filter Layer */
+        .liquid-container {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            filter: blur(80px) contrast(150%);
+            background: #000;
+            z-index: 1;
+        }
+
+        .blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            opacity: 0.8;
+        }
+
+        /* Text Overlay */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            color: white;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        #interactive-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="liquid-container" id="container">
+        </div>
+
+    <canvas id="interactive-canvas"></canvas>
+
+    <div class="content">
+        <h1>Happy<br>Birthday</h1>
+        <p>Flowing into a new year</p>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        const colors = ['var(--color1)', 'var(--color2)', 'var(--color3)', 'var(--color4)'];
+        const blobs = [];
+        const numBlobs = 6;
+
+        class Blob {
+            constructor(color) {
+                this.el = document.createElement('div');
+                this.el.className = 'blob';
+                this.el.style.background = color;
+                container.appendChild(this.el);
+
+                this.x = Math.random() * window.innerWidth;
+                this.y = Math.random() * window.innerHeight;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.size = 400 + Math.random() * 400;
+                
+                this.el.style.width = `${this.size}px`;
+                this.el.style.height = `${this.size}px`;
+            }
+
+            update(mouseX, mouseY) {
+                // Add subtle mouse attraction
+                let dx = mouseX - this.x;
+                let dy = mouseY - this.y;
+                this.vx += dx * 0.0001;
+                this.vy += dy * 0.0001;
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Friction
+                this.vx *= 0.99;
+                this.vy *= 0.99;
+
+                // Boundary bounce
+                if (this.x < -this.size) this.vx *= -1;
+                if (this.x > window.innerWidth) this.vx *= -1;
+                if (this.y < -this.size) this.vy *= -1;
+                if (this.y > window.innerHeight) this.vy *= -1;
+
+                this.el.style.transform = `translate(${this.x}px, ${this.y}px)`;
+            }
+        }
+
+        // Initialize Blobs
+        for (let i = 0; i < numBlobs; i++) {
+            blobs.push(new Blob(colors[i % colors.length]));
+        }
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animate() {
+            blobs.forEach(blob => blob.update(mouseX, mouseY));
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Responsive resize
+        window.addEventListener('resize', () => {
+            blobs.forEach(blob => {
+                blob.x = Math.random() * window.innerWidth;
+                blob.y = Math.random() * window.innerHeight;
+            });
+        });
+    </script>
+</body>
+</html>

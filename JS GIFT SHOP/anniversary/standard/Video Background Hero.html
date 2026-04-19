@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Hero | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --video-tint: rgba(0, 0, 0, 0.6);
+            --neon-accent: #3b82f6;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* The Hero Container */
+        .video-hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Background Video Logic */
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Tinted Overlay */
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--video-tint);
+            z-index: 2;
+        }
+
+        /* Content Layer */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .syncopate {
+            font-family: 'Syncopate', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            color: #fff;
+        }
+
+        .btn-cinema {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 18px 40px;
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            transition: 0.4s;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-cinema:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 30px rgba(255,255,255,0.4);
+        }
+
+        /* Scroll Indicator */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-10px) translateX(-50%);}
+            60% {transform: translateY(-5px) translateX(-50%);}
+        }
+    </style>
+</head>
+<body>
+
+    <section class="video-hero">
+        <video autoplay muted loop playsinline id="bg-video" poster="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-slow-motion-of-a-couple-hugging-4437-large.mp4" type="video/mp4">
+        </video>
+
+        <div class="video-overlay"></div>
+
+        <div class="hero-content">
+            <p class="text-[10px] tracking-[1em] text-white/40 mb-6 uppercase">A Decade in Motion</p>
+            <h1 class="syncopate text-4xl md:text-7xl mb-8">2016 // 2026</h1>
+            <p class="text-white/60 text-xs italic tracking-widest mb-12">"Every frame tells a story."</p>
+            
+            <button class="btn-cinema">Enter Premiere ($15.00)</button>
+            <p class="text-[8px] text-white/10 uppercase tracking-[0.4em] mt-6">Standard Resolution Active ($6.00)</p>
+        </div>
+
+        <div class="scroll-down">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+    </section>
+
+</body>
+</html>
+

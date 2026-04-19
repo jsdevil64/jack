@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focused - 10 Mini Projects</title>
+    <style>
+        /* Dark Theme Design */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 8px;
+            color: #38bdf8;
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 2rem;
+            text-shadow: 0 0 15px rgba(1, 134, 187);
+        }
+
+        /* 10 files-aiyum grid-ah vakkurathuku */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .mini-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .mini-card:hover {
+            border-color: #38bdf8;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 134, 187);
+        }
+
+        /* Iframe preview settings */
+        iframe {
+            width: 200%;
+            height: 200%;
+            border: none;
+            pointer-events: none; /* Click panna iframe kulla pogama irukka */
+            zoom: 0.5; /* Preview size-ah kurikka */
+            -moz-transform: scale(0.5);
+            -moz-transform-origin: 0 0;
+        }
+
+        .label {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PREMIUM</h1>
+
+    <div class="grid-container">
+        <div class="mini-card" onclick="window.location.href'premium/Balloon-Pop-Game.html'">
+            <iframe src="premium/Balloon-Pop-Game.html"></iframe>
+            <div class="label">Balloon-Pop-Game</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Falling-3D-Confetti.html'">
+            <iframe src="premium/Falling-3D-Confetti.html"></iframe>
+            <div class="label">Falling-3D-Confetti</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Firework-Display.html'">
+            <iframe src="premium/Firework-Display.html"></iframe>
+            <div class="label">Firework-Display</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Interactive-Starfield.html'">
+            <iframe src="premium/Interactive-Starfield.html"></iframe>
+            <div class="label">Interactive-Starfield</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Liquid-Gradient-Wave.html'">
+            <iframe src="premium/Liquid-Gradient-Wave.html"></iframe>
+            <div class="label">Liquid-Gradient-Wave</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Luxury+Gold_Silk-Flow.html'">
+            <iframe src="premium/Luxury+Gold_Silk-Flow.html"></iframe>
+            <div class="label">Luxury+Gold_Silk-Flow</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Magazine_Flip-book.html'">
+            <iframe src="premium/Magazine_Flip-book.html"></iframe>
+            <div class="label">Magazine_Flip-book</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Scratch-to-Reveal_Wish.html'">
+            <iframe src="premium/Scratch-to-Reveal_Wish.html"></iframe>
+            <div class="label">Scratch-to-Reveal_Wish</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Secret-Letter-in-Envelope.html'">
+            <iframe src="premium/Secret-Letter-in-Envelope.html"></iframe>
+            <div class="label">Secret-Letter-in-Envelope</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='premium/Spin-the-Wheel.html'">
+            <iframe src="premium/Spin-the-Wheel.html"></iframe>
+            <div class="label">Spin-the-Wheel</div>
+        </div>
+
+    </div>
+    
+    
+</body>
+</html>
+

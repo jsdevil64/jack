@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting Down | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow: hidden;
+        }
+
+        .serif-italic { font-family: 'Playfair Display', serif; }
+
+        /* The Digit Box */
+        .timer-box {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            min-width: 80px;
+            padding: 15px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .digit {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #38bdf8; /* Electric Blue */
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-top: 5px;
+        }
+
+        /* Ambient Glow */
+        .glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
+
+    <div class="glow"></div>
+
+    <header class="text-center mb-12">
+        <h1 class="serif-italic text-4xl md:text-5xl mb-4">The Next Chapter</h1>
+        <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Alex & Jordan • Anniversary 2026</p>
+    </header>
+
+    <div class="flex gap-4 md:gap-6 mb-16">
+        <div class="timer-box text-center">
+            <div id="days" class="digit">00</div>
+            <div class="label">Days</div>
+        </div>
+        <div class="timer-box text-center">
+            <div id="hours" class="digit">00</div>
+            <div class="label">Hrs</div>
+        </div>
+        <div class="timer-box text-center">
+            <div id="minutes" class="digit">00</div>
+            <div class="label">Min</div>
+        </div>
+        <div class="timer-box text-center">
+            <div id="seconds" class="digit">00</div>
+            <div class="label">Sec</div>
+        </div>
+    </div>
+
+    <div class="max-w-xs w-full">
+        <div class="border border-white/10 p-6 rounded-2xl text-center backdrop-blur-sm">
+            <p class="text-xs italic mb-4 opacity-60">Speed up the clock with a treat.</p>
+            <div class="flex justify-center gap-3">
+                <button class="bg-white text-black px-4 py-2 text-[10px] font-bold uppercase rounded-full hover:bg-sky-400 transition-colors">Coffee ($3)</button>
+                <button class="border border-white/20 px-4 py-2 text-[10px] font-bold uppercase rounded-full hover:border-white transition-colors">Snacks ($5)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        const anniversaryDate = new Date("Aug 22, 2026 00:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = anniversaryDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector("h1").innerHTML = "Happy Anniversary!";
+                document.querySelector(".flex.gap-4").innerHTML = "<div class='text-4xl serif-italic'>It's Time! 🥂</div>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
+

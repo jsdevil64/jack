@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Alex & Jordan</title>
+    <style>
+        :root {
+            --charcoal: #2d3436;
+            --cream: #f9f7f2;
+            --border-color: #d1d1d1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Bodoni Moda', serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* Classic European Border Frame */
+        .european-frame {
+            max-width: 700px;
+            width: 100%;
+            border: 1px solid var(--border-color);
+            padding: 80px 40px;
+            background: white;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+        }
+
+        /* The Monogram */
+        .monogram {
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            display: block;
+            border-bottom: 1px solid #eee;
+            width: fit-content;
+            margin: 0 auto 40px;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .date-location {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.85rem;
+            margin: 30px 0;
+            color: #777;
+        }
+
+        .body-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 2;
+            max-width: 500px;
+            margin: 0 auto 50px;
+        }
+
+        .btn-classic {
+            display: inline-block;
+            padding: 15px 45px;
+            border: 1px solid var(--charcoal);
+            background: transparent;
+            color: var(--charcoal);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            transition: 0.4s;
+        }
+
+        .btn-classic:hover {
+            background: var(--charcoal);
+            color: white;
+        }
+
+        /* Flourish Decoration */
+        .flourish {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .european-frame { padding: 40px 20px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;1,400&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="european-frame">
+        <span class="monogram">A & J</span>
+        
+        <p style="text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-size: 0.7rem;">The pleasure of your company is requested</p>
+        
+        <h1>Alex & Jordan</h1>
+        
+        <div class="date-location">
+            AUGUST 15, 2026 • LAKE COMO, ITALY
+        </div>
+
+        <div class="body-text">
+            Join us for an evening of dinner and dancing<br>
+            to celebrate our marriage in the heart of<br>
+            the Italian countryside.
+        </div>
+
+        <a href="#rsvp" class="btn-classic">Please Respond</a>
+
+        <div class="flourish">❧</div>
+    </div>
+
+</body>
+</html>

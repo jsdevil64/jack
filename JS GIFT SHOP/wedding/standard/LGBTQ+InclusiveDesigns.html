@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Celebration | Alex & Jordan</title>
+    <style>
+        :root {
+            --dark: #121212;
+            --white: #ffffff;
+            /* Sophisticated, muted pride-inspired gradient */
+            --pride-gradient: linear-gradient(45deg, #ff5f6d, #ffc371, #a8ff78, #4facfe, #96fbc4, #ff9a9e);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* The Prism Border Card */
+        .prism-card {
+            position: relative;
+            max-width: 600px;
+            width: 100%;
+            padding: 3px; /* Border thickness */
+            background: var(--pride-gradient);
+            background-size: 400% 400%;
+            animation: gradientMove 8s ease infinite;
+            border-radius: 20px;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 17px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .celebration-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .btn-inclusive {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--dark);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .btn-inclusive:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .pronouns {
+            font-size: 0.7rem;
+            color: #bbb;
+            margin-top: 10px;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .content { padding: 40px 20px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="prism-card">
+        <div class="content">
+            <p class="tagline">Love is Love</p>
+            
+            <h1>Alex & Jordan</h1>
+            <p style="margin-bottom: 30px; font-weight: bold;">06 . 20 . 2026</p>
+
+            <div class="celebration-text">
+                Join us as we celebrate our journey,<br>
+                our community, and our commitment<br>
+                to a lifetime of love and partnership.
+            </div>
+
+            <a href="#rsvp" class="btn-inclusive">RSVP WITH JOY</a>
+
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px;">
+                <div>
+                    <span style="display: block; font-weight: bold;">Alex</span>
+                    <span class="pronouns">they / them</span>
+                </div>
+                <div style="width: 1px; background: #eee;"></div>
+                <div>
+                    <span style="display: block; font-weight: bold;">Jordan</span>
+                    <span class="pronouns">he / him</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Garden Party | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --boxwood: #31511e;
+            --rose-tea: #f4d9d0;
+            --petal-white: #ffffff;
+            --hedge-shadow: rgba(49, 81, 30, 0.1);
+        }
+
+        body {
+            background-color: #fdfaf7;
+            /* Subtle trellis pattern */
+            background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+            color: var(--boxwood);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .serif-alice { font-family: 'Alice', serif; }
+
+        /* Garden Arch Container */
+        .garden-card {
+            background: var(--petal-white);
+            max-width: 440px;
+            width: 100%;
+            padding: 60px 40px;
+            border-radius: 200px 200px 20px 20px; /* The "Garden Arch" Shape */
+            border: 2px solid var(--rose-tea);
+            text-align: center;
+            box-shadow: 0 30px 60px var(--hedge-shadow);
+            position: relative;
+        }
+
+        .flower-icon {
+            font-size: 40px;
+            display: inline-block;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.05));
+        }
+
+        .btn-garden {
+            background-color: var(--boxwood);
+            color: white;
+            padding: 20px;
+            width: 100%;
+            border-radius: 50px;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(49, 81, 30, 0.2);
+        }
+
+        .btn-garden:hover {
+            background-color: var(--rose-tea);
+            color: var(--boxwood);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(244, 217, 208, 0.6);
+        }
+
+        .divider-vine {
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--boxwood), transparent);
+            margin: 30px auto;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="garden-card">
+        <span class="flower-icon">🌹</span>
+        
+        <header class="mb-10">
+            <p class="text-[9px] tracking-[0.7em] uppercase text-stone-400 mb-6">Bloom & Bliss</p>
+            <h1 class="serif-alice text-4xl mb-2">Alex & Jordan</h1>
+            <div class="divider-vine"></div>
+            <p class="text-xs italic tracking-widest text-stone-500">In Full Bloom Since 2016</p>
+        </header>
+
+        <main class="space-y-8">
+            <p class="text-sm leading-relaxed text-stone-600 px-4">
+                "Our love is a garden—carefully tended, wild in its beauty, and blossoming more every season."
+            </p>
+
+            <div class="pt-8 space-y-6">
+                <div>
+                    <span class="block text-[8px] uppercase tracking-[0.5em] mb-4 opacity-50">Private Soirée Fund</span>
+                    <button class="btn-garden">The Garden Tier ($15)</button>
+                </div>
+                <button class="text-[9px] uppercase tracking-[0.4em] text-stone-400 hover:text-[#31511e] transition-colors">
+                    Afternoon Tea Toast ($6)
+                </button>
+            </div>
+        </main>
+
+        <footer class="mt-20">
+            <p class="text-[8px] tracking-[0.6em] uppercase opacity-20 italic">The Manor Gardens • April 2026</p>
+        </footer>
+    </div>
+
+</body>
+</html>

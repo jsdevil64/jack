@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Digital | Royal Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #08020a;
+            /* Luxurious Purple Gradient */
+            --purple-gold: linear-gradient(135deg, #a74fff 0%, #ffffff 50%, #a74fff 100%);
+            --accent-purple: #d1a3ff;
+            --border: rgba(167, 79, 255, 0.15);
+            --glow-color: rgba(86, 20, 145, 0.4);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Deep Purple Ambient Background */
+        .ambient-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #08020a 100%);
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 480px;
+            padding: 50px 40px;
+            background: rgba(15, 5, 25, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            text-align: center;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 30px var(--glow-color);
+            transition: transform 0.4s ease;
+        }
+
+        /* Animated Purple Shimmer */
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            background: var(--purple-gold);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            margin-bottom: 40px;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .input-group {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            color: var(--accent-purple);
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 18px;
+            background: rgba(167, 79, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            border-color: #a74fff;
+            background: rgba(167, 79, 255, 0.08);
+            box-shadow: 0 0 20px rgba(167, 79, 255, 0.1);
+        }
+
+        .send-btn {
+            margin-top: 40px;
+            width: 100%;
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            /* Purple to White Gradient Button */
+            background: linear-gradient(135deg, #a74fff 0%, #d1a3ff 100%);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(167, 79, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .send-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(167, 79, 255, 0.5);
+            letter-spacing: 6px;
+            filter: brightness(1.1);
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--accent-purple);
+            opacity: 0.4;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <div class="container">
+        <h2>CUSTOM SELECTION</h2>
+        
+        <div class="input-group">
+            <label for="giftPrompt">WRITE WHICH SAMPLE GIFT YOU WANT</label>
+            <textarea id="giftPrompt" rows="4" placeholder="example:create happy birthday gift in inside flower...."></textarea>
+        </div>
+
+        <button class="send-btn" onclick="sendToWhatsApp()">Submit</button>
+        
+        <p class="footer-note">JS Digital | Excellence in Every Detail</p>
+    </div>
+
+    <script>
+        function sendToWhatsApp() {
+            const phoneNumber = "918939717405"; 
+            const promptValue = document.getElementById('giftPrompt').value;
+
+            if (promptValue.trim() === "") {
+                alert("Please share your vision.");
+                return;
+            }
+
+            const message = encodeURIComponent("Greetings JS Digital,\n\nI wish to explore a royal bespoke selection:\n\n" + promptValue);
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

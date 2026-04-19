@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashtag Feed | Anniversary v18</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-obsidian: #050505;
+            --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2397 75%, #323232 100%);
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Masonry Layout */
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .masonry-grid { column-count: 3; }
+        }
+
+        /* Post Card Styling */
+        .insta-post {
+            position: relative;
+            background: #111;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            break-inside: avoid;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Hover Interaction Layer */
+        .post-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            backdrop-filter: blur(4px);
+        }
+
+        .insta-post:hover .post-overlay {
+            opacity: 1;
+        }
+
+        .hashtag-tag {
+            background: var(--insta-gradient);
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="max-w-5xl mx-auto">
+
+    <header class="text-center mb-16">
+        <div class="inline-block hashtag-tag mb-4">Live Social Sync</div>
+        <h1 class="text-4xl font-extrabold uppercase tracking-tighter">#DecadeOfUs</h1>
+        <p class="mono text-[10px] text-stone-500 mt-4 tracking-[0.5em]">Syncing Feed... // 2016-2026</p>
+    </header>
+
+    <main class="masonry-grid">
+        
+        <div class="insta-post">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600" class="w-full" alt="Anniversary Event">
+            <div class="post-overlay">
+                <div class="flex gap-6 text-sm font-bold">
+                    <span>❤️ 1.2k</span>
+                    <span>💬 48</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="insta-post">
+            <img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?q=80&w=600" class="w-full" alt="The Journey">
+            <div class="post-overlay">
+                <div class="flex gap-6 text-sm font-bold">
+                    <span>❤️ 850</span>
+                    <span>💬 12</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="insta-post">
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=600&h=900" class="w-full object-cover" alt="Milestone">
+            <div class="post-overlay">
+                <div class="flex gap-6 text-sm font-bold">
+                    <span>❤️ 2.4k</span>
+                    <span>💬 105</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="insta-post">
+            <img src="https://images.unsplash.com/photo-1465495910676-dd7339896345?q=80&w=600" class="w-full" alt="Celebration">
+            <div class="post-overlay">
+                <div class="flex gap-6 text-sm font-bold">
+                    <span>❤️ 420</span>
+                    <span>💬 5</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="mt-20 text-center">
+        <button class="bg-white text-black px-12 py-4 text-[11px] font-bold uppercase tracking-[0.4em] hover:opacity-80 transition-all rounded-full">
+            Refresh API Connection ($30)
+        </button>
+        <p class="text-[7px] text-white/10 uppercase tracking-[1em] mt-10">Social-Gate v18.0 • Premium Build</p>
+    </footer>
+
+</body>
+</html>
+

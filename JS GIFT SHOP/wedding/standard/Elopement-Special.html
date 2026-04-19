@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Eloped! | Alex & Jordan</title>
+    <style>
+        :root {
+            --slate: #2f3640;
+            --cream: #f5f6fa;
+            --accent: #dcdde1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+        }
+
+        /* Full Screen Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .announcement {
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Story Section */
+        .story-section {
+            max-width: 700px;
+            margin: -100px auto 100px;
+            background: white;
+            padding: 80px 50px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .story-text {
+            font-family: 'Playfair Display', serif;
+            line-height: 2;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .btn-gallery {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: var(--slate);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .btn-gallery:hover {
+            background: #1e272e;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .story-section { margin: -50px 20px 50px; padding: 40px 20px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="hero">
+        <p class="announcement">Just Married</p>
+        <h1>Alex & Jordan</h1>
+        <p style="font-size: 1.2rem; letter-spacing: 3px;">03 . 15 . 2026</p>
+    </section>
+
+    <section class="story-section">
+        <h2 style="margin-bottom: 30px; letter-spacing: 2px;">THE SECRET IS OUT</h2>
+        <div class="story-text">
+            <p>On a quiet morning in the mountains of Scotland, we traded our vows in a ceremony meant just for us.</p>
+            <p style="margin-top: 20px;">While we missed having you there, we held you all in our hearts. We can't wait to celebrate with everyone in person soon!</p>
+        </div>
+
+        <a href="#gallery" class="btn-gallery">View Our Elopement Photos</a>
+        
+        <div style="margin-top: 60px; font-size: 0.8rem; color: #999;">
+            <p>Married at Old Quill Lodge</p>
+            <p>Isle of Skye</p>
+        </div>
+    </section>
+
+</body>
+</html>

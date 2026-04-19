@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday | Double Line Border</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fdfdfd;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .card {
+            background: #fff;
+            padding: 50px 30px;
+            width: 340px;
+            text-align: center;
+            /* 12. Double Line Border (The Feature) */
+            border: 10px double #2c3e50; 
+            /* 16. Sharp Square with minimal radius */
+            border-radius: 4px; 
+            /* 19. Shadow-only subtle depth */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* 45. Star Sparkles ✨ */
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #d4af37; /* Classic Gold */
+        }
+
+        /* 32. Elegant Serif / Mixed Fonts */
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin: 10px 0;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        p {
+            color: #34495e;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* 18. Top-only Accent Bar (Decorative) */
+        .accent {
+            width: 80px;
+            height: 2px;
+            background: #d4af37;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="accent"></div>
+        <div class="icon">✨</div>
+        <h1>Birthday Wishes</h1>
+        <p>Wishing you a day of distinction, elegance, and classic joy.</p>
+    </div>
+
+</body>
+</html>
+

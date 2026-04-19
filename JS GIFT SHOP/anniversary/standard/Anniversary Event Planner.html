@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planner | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slate: #1e293b;
+            --gold-muted: #947e5c;
+            --off-white: #f8f9fa;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--slate);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* Elegant Hero Section */
+        .hero-banner {
+            background: var(--slate);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--gold-muted);
+        }
+
+        /* Planning Grid */
+        .plan-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold-muted);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .btn-coordinate {
+            background: var(--gold-muted);
+            color: white;
+            width: 100%;
+            padding: 20px;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.4s;
+        }
+
+        .btn-coordinate:hover {
+            background: var(--slate);
+            letter-spacing: 5px;
+        }
+
+        .timeline-dot {
+            height: 10px;
+            width: 10px;
+            background: var(--gold-muted);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-banner">
+        <p class="text-[10px] tracking-[0.6em] uppercase opacity-60 mb-4">Celebration Management</p>
+        <h1 class="serif text-5xl mb-2">Alex & Jordan</h1>
+        <p class="text-xs italic opacity-80">Managing 10 Years of Excellence</p>
+    </section>
+
+    <div class="plan-grid">
+        <header class="text-center mb-8">
+            <h2 class="serif text-3xl">The Itinerary</h2>
+            <div class="h-[1px] w-12 bg-stone-300 mx-auto mt-4"></div>
+        </header>
+
+        <div class="service-card">
+            <div class="flex items-center mb-4">
+                <span class="timeline-dot"></span>
+                <h3 class="font-bold text-sm uppercase tracking-widest">Afternoon: High Tea</h3>
+            </div>
+            <p class="text-xs leading-relaxed text-stone-500">A curated selection of pastries and teas at our favorite rooftop lounge.</p>
+            <p class="text-[10px] font-bold mt-4 text-[#947e5c] uppercase">Tier 1 • $6.00</p>
+        </div>
+
+        <div class="service-card">
+            <div class="flex items-center mb-4">
+                <span class="timeline-dot"></span>
+                <h3 class="font-bold text-sm uppercase tracking-widest">Evening: Candlelit Dinner</h3>
+            </div>
+            <p class="text-xs leading-relaxed text-stone-500">A five-course tasting menu followed by a private cellar tour.</p>
+            <p class="text-[10px] font-bold mt-4 text-[#947e5c] uppercase">Tier 2 • $15.00</p>
+        </div>
+
+        <button class="btn-coordinate">Confirm Attendance</button>
+        
+        <footer class="mt-12 text-center pb-10">
+            <p class="text-[9px] tracking-[0.4em] uppercase text-stone-400">
+                Official Event Planner • Est. April 2026
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>

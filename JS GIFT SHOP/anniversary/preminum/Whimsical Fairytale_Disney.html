@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ever After | Anniversary v28.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;800&family=JetBrains+Mono&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --magic-sky: #0f172a;
+            --pixie-gold: #fde047;
+            --castle-blue: #38bdf8;
+            --portal-white: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .cursive { font-family: 'Pacifico', cursive; }
+
+        /* Magic Sparkles Canvas */
+        #sparkle-canvas {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* The Magic Portal Card */
+        .portal-card {
+            background: var(--portal-white);
+            backdrop-filter: blur(25px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 40px;
+            padding: 60px 40px;
+            width: 90%;
+            max-width: 480px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.1);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .portal-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            border-color: var(--pixie-gold);
+            box-shadow: 0 0 70px rgba(253, 224, 71, 0.15);
+        }
+
+        .cta-magic {
+            background: linear-gradient(135deg, var(--castle-blue), #818cf8);
+            color: white;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-magic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--pixie-gold);
+            filter: brightness(1.1);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="sparkle-canvas"></canvas>
+
+    <main class="portal-card">
+        <header class="mb-12">
+            <p class="mono text-[8px] text-sky-300 uppercase tracking-[0.6em] mb-4">Chapter_28 // Magic_System</p>
+            <h1 class="cursive text-5xl text-yellow-200 glow-text mb-4">Once Upon <br>A Time.</h1>
+            <div class="h-[1px] w-12 bg-sky-500/30 mx-auto mt-6"></div>
+        </header>
+
+        <section class="mb-12 space-y-6">
+            <p class="text-sm leading-relaxed text-sky-100 font-light italic">
+                A decade of dreams woven into code. Celebrating 28 years of a story that’s still being written—from the shores of India to the skyline of Dubai.
+            </p>
+            <div class="mono text-[7px] tracking-[0.8em] text-sky-400 uppercase">
+                Magic.Kingdom // 2026
+            </div>
+        </section>
+
+        <footer>
+            <button class="cta-magic w-full py-4 text-[10px] font-bold uppercase tracking-[0.3em]">
+                Enter the Dream ($30)
+            </button>
+            <p class="mt-10 mono text-[7px] text-sky-900 tracking-[1em] uppercase">Disney-Core • Fairytale Tier</p>
+        </footer>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('sparkle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.1;
+                this.speedY = Math.random() * -1 - 0.5;
+                this.opacity = Math.random();
+            }
+            update() {
+                this.y += this.speedY;
+                if (this.y < 0) this.y = canvas.height;
+                this.opacity -= 0.005;
+                if (this.opacity <= 0) this.opacity = 1;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(253, 224, 71, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 50; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize(); init(); animate();
+    </script>
+</body>
+</html>

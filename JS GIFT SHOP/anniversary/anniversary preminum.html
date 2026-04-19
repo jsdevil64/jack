@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focused - 10 Mini Projects</title>
+    <style>
+        /* Dark Theme Design */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 8px;
+            color: #bf953f;
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 2rem;
+            text-shadow: 0 0 15px rgba(179, 135, 40);
+        }
+
+        /* 10 files-aiyum grid-ah vakkurathuku */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .mini-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .mini-card:hover {
+            border-color: #38bdf8;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 134, 187);
+        }
+
+        /* Iframe preview settings */
+        iframe {
+            width: 200%;
+            height: 200%;
+            border: none;
+            pointer-events: none; /* Click panna iframe kulla pogama irukka */
+            zoom: 0.5; /* Preview size-ah kurikka */
+            -moz-transform: scale(0.5);
+            -moz-transform-origin: 0 0;
+        }
+
+        .label {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <h1>PREMINUM</h1>
+
+    <div class="grid-container">
+        <div class="mini-card" onclick="window.location.href='preminum/25th Anniversary Company Hub.html'">
+            <iframe src="preminum/25th Anniversary Company Hub.html"></iframe>
+            <div class="label">25th Anniversary Company Hub</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Black-Tie Gala Luxe.html'">
+            <iframe src="preminum/Black-Tie Gala Luxe.html"></iframe>
+            <div class="label">Black-Tie Gala Luxe</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Classic Heritage_Royal Foil.html'">
+            <iframe src="preminum/Classic Heritage_Royal Foil.html"></iframe>
+            <div class="label">Classic Heritage_Royal Foil</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Cyber-Neon_Futuristic Party.html'">
+            <iframe src="preminum/Cyber-Neon_Futuristic Party.html"></iframe>
+            <div class="label">Cyber-Neon_Futuristic Party</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Gold and White.html'">
+                <iframe src="preminum/Gold and White.html"></iframe>
+            <div class="label">Gold and White</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Guest Voice-Note Hub.html'">
+            <iframe src="preminum/Guest Voice-Note Hub.html"></iframe>
+            <div class="label">Guest Voice-Note Hub</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Live Instagram Hashtag Feed.html'">
+            <iframe src="preminum/Live Instagram Hashtag Feed.html"></iframe>
+            <div class="label">Live Instagram Hashtag Feed</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Luxury Florist Showcase.html'">
+            <iframe src="preminum/Luxury Florist Showcase.html"></iframe>
+            <div class="label">Luxury Florist Showcase</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Password-Protected Photo Portal.html'">
+            <iframe src="preminum/Password-Protected Photo Portal.html"></iframe>
+            <div class="label">Password-Protected Photo Portal</div>
+        </div>
+
+        <div class="mini-card" onclick="window.location.href='preminum/Whimsical Fairytale_Disney.html'">
+            <iframe src="preminum/Whimsical Fairytale_Disney.html"></iframe>
+            <div class="label">Whimsical Fairytale_Disney</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

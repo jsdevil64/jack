@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musical Pulse Birthday</title>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --note-primary: #00ffcc;
+            --note-secondary: #ff00ff;
+            --note-tertiary: #ffff00;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: var(--bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        .stage {
+            position: relative;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* The Main Pulsing Core */
+        .pulse-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--note-primary) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: corePulse 1s ease-out infinite;
+        }
+
+        @keyframes corePulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        }
+
+        /* Floating Musical Notes */
+        .note {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            opacity: 0;
+            filter: drop-shadow(0 0 10px currentColor);
+            animation: noteFly 3s linear infinite;
+        }
+
+        @keyframes noteFly {
+            0% { 
+                transform: translate(0, 0) rotate(0deg) scale(0.5); 
+                opacity: 0; 
+            }
+            10% { opacity: 1; }
+            100% { 
+                transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(1.2); 
+                opacity: 0; 
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 20;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+
+        p {
+            color: var(--note-primary);
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Interaction hint */
+        .hint {
+            position: fixed;
+            bottom: 30px;
+            opacity: 0.4;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="stage" id="stage">
+        <div class="pulse-circle"></div>
+        <div class="content">
+            <h1>HAPPY</h1>
+            <p>To your own rhythm</p>
+            <h1>BIRTHDAY</h1>
+        </div>
+    </div>
+
+    <div class="hint">CLICK ANYWHERE TO ADD A NOTE</div>
+
+    <script>
+        const symbols = ['♪', '♫', '♬', '♩', '∮', '‖'];
+        const colors = ['#00ffcc', '#ff00ff', '#ffff00', '#ff3366'];
+        const stage = document.getElementById('stage');
+
+        function createNote(x = null, y = null) {
+            const note = document.createElement('div');
+            note.className = 'note';
+            note.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            // Random Direction and Rotation
+            const tx = (Math.random() - 0.5) * 400;
+            const ty = (Math.random() - 0.5) * 400;
+            const rot = (Math.random() - 0.5) * 720;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            note.style.setProperty('--tx', `${tx}px`);
+            note.style.setProperty('--ty', `${ty}px`);
+            note.style.setProperty('--rot', `${rot}deg`);
+            note.style.color = color;
+
+            // Positioning: Center of stage or mouse click
+            if (x && y) {
+                note.style.left = `${x}px`;
+                note.style.top = `${y}px`;
+            } else {
+                note.style.left = `50%`;
+                note.style.top = `50%`;
+            }
+
+            document.body.appendChild(note);
+
+            // Cleanup
+            setTimeout(() => {
+                note.remove();
+            }, 3000);
+        }
+
+        // Automatic Pulse (The "Beat")
+        setInterval(() => {
+            createNote();
+        }, 400);
+
+        // Interactive Pulse
+        window.addEventListener('mousedown', (e) => {
+            for(let i=0; i<5; i++) {
+                createNote(e.clientX, e.clientY);
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle Adventure | Happy Birthday</title>
+    <style>
+        :root {
+            --deep-forest: #081c15;
+            --emerald: #1b4332;
+            --mint: #b7e4c7;
+            --tiger-orange: #ff9f1c;
+            --leaf-shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--deep-forest);
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ambient Mist Background */
+        .mist {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(183, 228, 199, 0.05) 0%, transparent 70%);
+            animation: breathe 8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        /* The Jungle Layers */
+        .jungle-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        /* Back Leaves */
+        .leaf-back {
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.2;
+            filter: blur(4px);
+            z-index: 2;
+            animation: sway 10s ease-in-out infinite alternate;
+        }
+
+        /* Main Typography */
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            font-size: 0.9rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--tiger-orange);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            margin: 0;
+            color: var(--mint);
+            line-height: 0.9;
+            text-shadow: 0 10px 30px var(--leaf-shadow);
+        }
+
+        /* Foreground Leaves (Interactive) */
+        .leaf-front {
+            position: absolute;
+            font-size: 12rem;
+            z-index: 20;
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(10px 20px 20px black);
+        }
+
+        .leaf-front:hover {
+            transform: scale(1.1) rotate(10deg) translate(20px, -20px);
+        }
+
+        @keyframes sway {
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
+
+        /* Rain/Firefly Canvas */
+        #particleCanvas {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .footer-note {
+            position: fixed;
+            bottom: 30px;
+            color: var(--mint);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            opacity: 0.4;
+            text-transform: uppercase;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="mist"></div>
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="jungle-container">
+        <div class="leaf-back" style="top: 10%; left: 5%;">🌿</div>
+        <div class="leaf-back" style="bottom: 10%; right: 5%; animation-delay: -2s;">🍃</div>
+
+        <div class="content">
+            <div class="eyebrow">Into the Wild</div>
+            <h1>HAPPY<br>BIRTHDAY</h1>
+            <p style="color: white; opacity: 0.6; margin-top: 20px; font-weight: 300; letter-spacing: 2px;">Another year of adventure awaits.</p>
+        </div>
+
+        <div class="leaf-front" style="top: -50px; right: 15%;">🌿</div>
+        <div class="leaf-front" style="bottom: -50px; left: 10%; transform: rotate(45deg);">🍃</div>
+        <div class="leaf-front" style="top: 40%; left: -80px; font-size: 18rem;">🌱</div>
+    </div>
+
+    <div class="footer-note">Hover over the leaves to clear the path</div>
+
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let fireflies = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Firefly {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.resetY = Math.random() * canvas.height;
+                this.y = this.resetY;
+                this.size = Math.random() * 3;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = (Math.random() - 0.5) * 0.8;
+                this.opacity = Math.random();
+                this.blink = Math.random() * 0.02;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity += this.blink;
+                if (this.opacity > 1 || this.opacity < 0) this.blink *= -1;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.fillStyle = `rgba(183, 228, 199, ${this.opacity})`;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = "#b7e4c7";
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            resize();
+            fireflies = [];
+            for (let i = 0; i < 40; i++) fireflies.push(new Firefly());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            fireflies.forEach(f => {
+                f.update();
+                f.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        animate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symphony of Us | Alex & Jordan</title>
+    <style>
+        :root {
+            --night-blue: #0a0e14;
+            --rose-gold: #b76e79;
+            --glass-white: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--night-blue);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The Visualizer Canvas */
+        #visualizer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        /* Central Card */
+        .invitation-card {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 60px;
+            background: var(--glass-white);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 2px;
+            transition: transform 0.1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            letter-spacing: 12px;
+            margin-bottom: 10px;
+            color: var(--rose-gold);
+        }
+
+        .audio-controls {
+            margin-top: 40px;
+            cursor: pointer;
+        }
+
+        .play-btn {
+            background: none;
+            border: 2px solid var(--rose-gold);
+            color: var(--rose-gold);
+            padding: 12px 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .play-btn:hover {
+            background: var(--rose-gold);
+            color: white;
+        }
+
+        .status-text {
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            opacity: 0.5;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <canvas id="visualizer"></canvas>
+
+    <div class="invitation-card" id="mainCard">
+        <span style="font-size: 0.7rem; letter-spacing: 5px; opacity: 0.6;">A CELEBRATION OF LOVE</span>
+        <h1>ALEX &<br>JORDAN</h1>
+        <p style="letter-spacing: 3px; font-size: 0.8rem;">AUGUST 22, 2026</p>
+
+        <div class="audio-controls">
+            <button class="play-btn" id="playToggle">Play Melody</button>
+            <div class="status-text" id="status">CLICK TO UNMUTE THE STORY</div>
+        </div>
+    </div>
+
+    <audio id="bgMusic" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
+
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playToggle');
+        const canvas = document.getElementById('visualizer');
+        const ctx = canvas.getContext('2d');
+        const card = document.getElementById('mainCard');
+        
+        let audioContext, analyser, dataArray, source;
+
+        playBtn.addEventListener('click', function() {
+            if (!audioContext) {
+                setupAudio();
+            }
+            
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = "Pause Melody";
+            } else {
+                audio.pause();
+                playBtn.textContent = "Play Melody";
+            }
+        });
+
+        function setupAudio() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            source = audioContext.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioContext.destination);
+            analyser.fftSize = 256;
+
+            const bufferLength = analyser.frequencyBinCount;
+            dataArray = new Uint8Array(bufferLength);
+            
+            canvas.width = window.innerWidth;
+            canvas.height = 200;
+            draw();
+        }
+
+        function draw() {
+            requestAnimationFrame(draw);
+            analyser.getByteFrequencyData(dataArray);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw Waveform
+            ctx.beginPath();
+            ctx.strokeStyle = '#b76e79';
+            ctx.lineWidth = 2;
+            
+            const sliceWidth = canvas.width / dataArray.length;
+            let x = 0;
+
+            for (let i = 0; i < dataArray.length; i++) {
+                const v = dataArray[i] / 128.0;
+                const y = (v * canvas.height) / 2;
+
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+
+                x += sliceWidth;
+            }
+            ctx.stroke();
+
+            // Card Pulse Effect
+            const volume = dataArray.reduce((a, b) => a + b) / dataArray.length;
+            const scale = 1 + (volume / 1000);
+            card.style.transform = `scale(${scale})`;
+        }
+    </script>
+</body>
+</html>

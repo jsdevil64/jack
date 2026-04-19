@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Night | Alex & Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #d4d4d8;
+            font-family: 'Tenor Sans', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .display-font { font-family: 'Syncopate', sans-serif; }
+
+        /* The Speakeasy Card */
+        .lounge-card {
+            background: linear-gradient(145deg, #121212, #000000);
+            border: 1px solid #27272a;
+            padding: 50px 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        /* Neon Accent */
+        .neon-glow {
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #f43f5e, 0 0 30px #f43f5e;
+            animation: flicker 2s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.7; }
+        }
+
+        .drink-btn {
+            background: transparent;
+            border: 1px solid #f43f5e;
+            color: #f43f5e;
+            padding: 14px 28px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .drink-btn:hover {
+            background: #f43f5e;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+        }
+
+        .art-deco-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #52525b, transparent);
+            margin: 30px auto;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lounge-card">
+        <header class="mb-10">
+            <p class="display-font text-[9px] tracking-[0.5em] text-zinc-500 uppercase mb-4">You're Invited</p>
+            <h1 class="display-font text-2xl mb-2 neon-glow">COCKTAIL NIGHT</h1>
+            <p class="italic text-zinc-400">Celebrating One Year of Spirits</p>
+            <div class="art-deco-line"></div>
+            <h2 class="display-font text-lg text-white uppercase tracking-tighter">Alex + Jordan</h2>
+        </header>
+
+        <main class="space-y-8">
+            <div class="space-y-2">
+                <p class="text-[11px] uppercase tracking-widest text-zinc-500">The Setting</p>
+                <p class="text-sm">The Rooftop Lounge • 8:00 PM</p>
+            </div>
+
+            <p class="text-xs italic text-zinc-500 px-6">
+                "Life is a cocktail; it's all in how you mix it. Join us for a night of curated drinks and dancing."
+            </p>
+
+            <div class="pt-6 space-y-4">
+                <button class="drink-btn w-full">Buy a Round ($5)</button>
+                <button class="text-[9px] uppercase tracking-widest text-zinc-600 hover:text-zinc-200 transition-colors">
+                    Send a Shot ($3)
+                </button>
+            </div>
+        </main>
+
+        <footer class="mt-16">
+            <p class="display-font text-[8px] tracking-[0.6em] text-zinc-700">STRICTLY V.I.P. • APRIL 2026</p>
+        </footer>
+    </div>
+
+</body>
+</html>
+

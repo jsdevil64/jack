@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Birthday Glow</title>
+    <style>
+        :root {
+            --bg-warm: #1a0a0d;
+            --rose-glow: #ff4d6d;
+            --champagne: #f8edeb;
+            --soft-gold: #d4af37;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-warm);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Great Vibes', cursive;
+            overflow: hidden;
+        }
+
+        /* Ambient Bokeh Background */
+        .bokeh-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #2d0f14 0%, #1a0a0d 100%);
+            z-index: 1;
+        }
+
+        /* Interactive Petals/Ember Canvas */
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            pointer-events: none;
+            filter: blur(2px);
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: fadeIn 3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; filter: blur(10px); }
+            to { opacity: 1; filter: blur(0px); }
+        }
+
+        /* Heartbeat Glow Typography */
+        h1 {
+            font-size: 5rem;
+            color: var(--champagne);
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+            animation: heartbeat 4s ease-in-out infinite;
+            font-weight: 400;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 20px rgba(255, 77, 109, 0.4); }
+            50% { transform: scale(1.05); text-shadow: 0 0 40px rgba(255, 77, 109, 0.8); }
+        }
+
+        .sub-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--rose-glow);
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .divider {
+            width: 50px;
+            height: 1px;
+            background: var(--soft-gold);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .divider::after {
+            content: "♥";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-warm);
+            padding: 0 10px;
+            color: var(--rose-glow);
+            font-size: 0.8rem;
+        }
+
+        /* Soft Focus Vignette */
+        .vignette {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, transparent 20%, rgba(26, 10, 13, 0.8) 100%);
+            z-index: 5;
+            pointer-events: none;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bokeh-container"></div>
+    <div class="vignette"></div>
+    <canvas id="canvas"></canvas>
+
+    <div class="content">
+        <p class="sub-text">To My Everything</p>
+        <h1>Happy Birthday</h1>
+        <div class="divider"></div>
+        <p class="sub-text" style="letter-spacing: 3px; font-size: 0.7rem;">Your light makes my world glow</p>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class GlowParticle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 100;
+                this.size = Math.random() * 5 + 2;
+                this.speedY = Math.random() * 0.5 + 0.2;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5;
+                this.color = Math.random() > 0.5 ? '#ff4d6d' : '#f8edeb';
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -10 || this.opacity <= 0) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            resize();
+            for (let i = 0; i < 50; i++) {
+                particles.push(new GlowParticle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        init();
+        animate();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Tie Luxury | Alex & Jordan</title>
+    <style>
+        :root {
+            --coal-black: #0a0a0a;
+            --gold-leaf-url: url('https://www.transparenttextures.com/patterns/gold-glitter.png'); /* Placeholder for your premium gold texture */
+            --off-white: #f5f5f5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--coal-black);
+            color: var(--off-white);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* The Gold Leaf Frame */
+        .gold-border-container {
+            padding: 2px;
+            background: linear-gradient(135deg, #d4af37, #f1d377, #d4af37, #b38b2d);
+            background-size: 400% 400%;
+            animation: goldShimmer 8s ease infinite;
+            position: relative;
+        }
+
+        @keyframes goldShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .main-card {
+            background: var(--coal-black);
+            padding: 80px 60px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        /* Gold Leaf Typography */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            /* Applying Gold Texture to Text */
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .monogram {
+            font-size: 0.8rem;
+            letter-spacing: 10px;
+            color: #d4af37;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .divider {
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 30px auto;
+        }
+
+        .event-details {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 2.5;
+            opacity: 0.8;
+        }
+
+        .btn-gold-leaf {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 18px 50px;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            transition: 0.5s;
+        }
+
+        .btn-gold-leaf:hover {
+            background: #d4af37;
+            color: var(--coal-black);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="gold-border-container">
+        <main class="main-card">
+            <span class="monogram">A &bull; J</span>
+            
+            <h1>Alex &<br>Jordan</h1>
+            
+            <div class="divider"></div>
+
+            <div class="event-details">
+                AUGUST 22, 2026<br>
+                THE BLACKSTONE PLAZA<br>
+                SIX O'CLOCK IN THE EVENING
+            </div>
+
+            <p style="margin-top: 30px; font-style: italic; opacity: 0.6; font-size: 0.9rem;">
+                Black Tie Attire Required
+            </p>
+
+            <a href="#" class="btn-gold-leaf">Kindly Respond</a>
+        </main>
+    </div>
+
+</body>
+</html>
+
